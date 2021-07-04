@@ -1,0 +1,276 @@
+/* global */
+:root {
+     --wgreen-: #8fbc8f;
+     --blue-: #2d6188;
+     --darkgrey-: #2f4f4f;
+     --red-: #fb5757;
+     --dullgrey-: rgb(211, 211, 211);
+     --green-: #07DA63;
+     --lightblue-: #3792cb;
+     --matteblack-: #141414;
+     --orange-: #ffbc3f;
+}
+
+html, body{ 
+     margin: 0; padding: 0;
+     height: 100%;
+     background-image: url('/assets/img/bg/bg-green.png'); 
+     /* background-color: var(--matteblack-); */
+     background-size: cover;
+}
+
+header{
+     font-family: 'Didact Gothic', sans-serif;
+}
+
+/* body */
+main{
+     min-height: 100%; margin-bottom: -75px;
+}
+
+.main-content{
+     color: var(--green-);
+     font-family: 'Manrope', sans-serif;
+}
+
+/* images/logos */
+i{
+     font-size: 25px; 
+     color: white;
+}
+
+.logo{
+     width: 50px;
+}
+
+.title-img{
+     width: 100px;
+}
+
+.results-img{
+     width: 300px;
+}
+
+.results-img-sm{
+     width: 75px;
+}
+
+/* text content */
+p{
+     font-size: 20px; 
+     color: white;
+}
+
+.body-text{
+     color: white;
+}
+
+hr{
+     width: 97%;
+     border-top: 1px solid white;
+     margin: 0;
+     padding: 0;
+     align-items: center;
+}
+
+.title{
+     font-weight: bold;
+     font-size: xx-large;
+     color: var(--matteblack-);
+}
+
+.features-text{
+     color: var(--matteblack-);
+     font-size: 20px;
+}
+
+ul .features-text{
+     font-size: 25px;
+}
+
+/* navigation bar */
+.navbar{
+     background-color: var(--green-);
+}
+
+.nav-links:hover{
+     color: var(--matteblack-);
+     text-decoration: none;
+     transition: 0.5s;
+}
+
+.nav-links{
+     margin-left: 10px;
+     color: white;
+     font-size: 20px;
+     transition: 0.5s;
+}
+
+/* containers and alignment */
+.col{
+     text-align: center; align-items: center;
+}
+
+.right-align{
+     text-align: right; align-items: right;
+}
+
+.left-align{
+     text-align: left; align-items: left;
+}
+
+.center-align{
+     text-align: center; align-items: center;
+}
+
+.justify-align{
+     text-align: justify;
+}
+
+.box{
+     border: 2px solid white;
+}
+
+/* buttons */
+.upload-btn{
+     display: none;
+}
+
+.btn{
+     width: 250px;
+     border-radius: 30px; 
+     border-color: var(--dullgrey-); 
+     color: white;
+     border: solid;
+     cursor: pointer; 
+     margin: 0;
+     background-color: var(--green-);
+     font-size: x-large;
+     transition: 0.5s;
+     margin-bottom: 10px;
+}
+
+.btn:hover{
+     border-color: var(--dullgrey-);
+     background-color: var(--green-);
+     letter-spacing: 1.5px;
+     transition: 0.5s;
+}
+.btn:focus{
+     outline: none;
+     box-shadow: none;
+}
+
+.btn-other{
+     background-color: var(--lightblue-);
+     color:white;
+     transition: 0.5s;
+}
+
+.btn-other:hover{
+     border-color: var(--dullgrey-);
+     background-color: var(--lightblue-);
+     letter-spacing: 1.5px;
+     transition: 0.5s;
+     color: white;
+}
+
+.btn-cancel{
+     background-color: white;
+     color: var(--lightblue-);
+     transition: 0.5s;
+}
+
+.btn-cancel:hover{
+     background-color: white;
+     transition: 0.5s;
+     color: var(--lightblue-);
+}
+
+/* alerts */
+.alert{
+     color: var(--darkgrey-);
+}
+   
+/* progress bar */
+
+#progbar-out {
+     width: 100%;
+     background-color: #ddd;
+     border-radius: 5px;
+     border-style: solid;
+     border-color: var(--dullgrey-);
+}
+   
+#progbar {
+     width: 0%;
+     height: 15px;
+     background-color: var(--green-);
+     text-align: center;
+     /* line-height: 30px; */
+     color: white;
+     border-radius: 5px;
+}
+
+/* features showcase */
+.scrollspy{
+     position: relative; 
+     height: 600px;
+     overflow-y: scroll;
+     background-color: var(--green-);
+     color: white;
+     border-radius: 10px;
+     border-style: solid;
+     border-color: white;
+     border-radius: 5px;
+}
+
+.scrollspy p{
+     color: var(--matteblack-);
+}
+
+.list-group-item{
+     color: var(--matteblack-);
+     font-size: 20px;
+}
+
+/* scrollbar mod */
+::-webkit-scrollbar {
+     width: 10px;
+}
+   
+::-webkit-scrollbar-track {
+     background: #f1f1f1; 
+}
+    
+::-webkit-scrollbar-thumb {
+     background: #888; 
+}
+   
+::-webkit-scrollbar-thumb:hover {
+     background: #555; 
+}
+
+/* pdf viewer */
+iframe{
+     border: solid; 
+     border-color: darkseagreen; 
+     border-width: 5px; 
+     border-radius: 5px;
+     width: 600px; 
+     height: 500px;
+}
+
+/* sticky footer */
+.push, footer{
+     height: 75px;
+}
+
+footer{
+     background-color: var(--green-);
+}
+
+footer p{ 
+     color: white;
+     font-size: 16px;
+}

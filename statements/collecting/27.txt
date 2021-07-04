@@ -1,0 +1,1 @@
+ "Epihunter Mobile Application" means the mobile application (i) which the user has to download on its mobile device and (ii) is intended to record (via third-party EEG headsets and user input), display, analyze, store and transmit your epilepsy data 

@@ -1,0 +1,1 @@
+ Payment information such as transaction identifiers and summary information that does not include credit card or bank account numbers (we do not collect or store financial account information) 

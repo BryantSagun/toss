@@ -1,0 +1,102 @@
+<div class="push"></div>
+<div class="container-fluid w-100">
+    <!-- recommendation message -->
+
+    <div class="row">
+        <div class="col-lg-8 center-align">
+            <div class="row py-2">
+                <div class="col">
+                    <h3>Recommendation Summary for <%= file %> </h3>
+                </div>
+            </div>
+            <% if (finalEvaluation > 29) { %>
+                <h3> Document Evaluation Score: <strong style="color: var(--red-);"><%= finalEvaluation %> % </strong></h3>
+                <img class="results-img py-4" src="/assets/img/results/reject.png" alt="reject">
+                <h4>TOSS advises you to <strong> NOT </strong> accept the terms and conditions!</h4>
+                <p>The terms of service document "<%= file %>" that you have uploaded for analysis contains multiple terms that are not user friendly.</p>
+            <% }else if (finalEvaluation > 19) { %>
+                <h3> Document Evaluation Score: <strong style="color: var(--orange-)"><%= finalEvaluation %> % </strong></h3>
+                <img class="results-img py-4" src="/assets/img/results/caution.png" alt="caution">
+                <h4>TOSS suggests that you reconsider the terms before accepting.</h4>
+                <p>The terms of service document that you have uploaded for analysis contains a significant number of unfriendly terms.</p>
+            <% }else { %>
+                <h3> Document Evaluation Score: <strong style="color: var(--wgreen-);"><%= finalEvaluation %> % </strong></h3>
+                <img class="results-img py-4" src="/assets/img/results/good.png" alt="good">
+                <h4>TOSS recommends that you accept the terms!</h4>
+                <p>The terms of service document that you have uploaded for analysis turns out to be good!</p>
+            <% } %>
+        </div>
+        <div class="col-lg-4 center-align box">
+            <div class="py-2">
+                <div class="col">
+                    <h3>Category Analytics</h3>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-6">
+                    <img class="results-img-sm py-2" src="/assets/img/results/pie.png" alt="">
+                    <h4>Collecting Data</h4>
+                    <h6><%= ratings.collectingDataRating %> % </h6>
+                </div>
+                <div class="col-6">
+                    <img class="results-img-sm py-2" src="/assets/img/results/doc.png" alt="">
+                    <h4>Using Data</h4>
+                    <h6><%= ratings.usingDataRating %> % </h6>
+                </div>
+            </div>
+            <div class="row" style="margin-bottom: 20px;">
+                <div class="col-6">
+                    <img class="results-img-sm py-2" src="/assets/img/results/share.png" alt="">
+                    <h4>Sharing Data</h4>
+                    <h6><%= ratings.sharingDataRating %> % </h6>
+                </div>
+                <div class="col-6">
+                    <img class="results-img-sm py-2" src="/assets/img/results/update.png" alt="">
+                    <h4>Updating TOS</h4>
+                    <h6><%= ratings.updatingToSRating %> % </h6>
+                </div>
+            </div>
+            <div class="py-2">
+                <div style="margin-bottom: 10px;">
+                    <h3>Document Statistics</h3>
+                </div>
+                <div class="row">
+                    <div class="col-8 text-left">Number of Pages: </div>
+                    <div class="col-4 text-center">0</div>
+                </div>
+                <div class="row">
+                    <div class="col-8 text-left">Number of Statements: </div>
+                    <div class="col-4 text-center">0</div>
+                </div>
+                <div class="row">
+                    <div class="col-8 text-left">Number of Lawful Statements Detected: </div>
+                    <div class="col-4 text-center">0</div>
+                </div>
+                <div class="row">
+                    <div class="col-8 text-left">Number of Unlawful Statements Detected: </div>
+                    <div class="col-4 text-center">0</div>
+                </div>
+            </div>
+            <div class="py-2">
+                <form action="/results/download" method="POST">
+                    <label class="btn btn-primary">Download Report<a href="#" onclick="window.open('../report.pdf', '_blank', 'fullscreen=yes'); return true;" target = "_blank"></a><button type="submit" name="downloadReport" id="downloadReport" class='upload-btn'></a></label>
+               </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- end of recommendation message -->
+
+    <hr class="center-align w-100 my-4">
+
+    <div>
+        <div class="text-center">
+            <h1>Learn more about the document ratings and evaluation</h1>
+        </div>
+        <div class="text-justify">
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+
+            <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?</p>
+        </div>
+    </div>
+</div>

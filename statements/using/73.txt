@@ -1,0 +1,1 @@
+ regular monitoring for security breaches, and a process both for identifying and  accessing  reasonably  foreseeable  vulnerabilities  in  the  Company’s computer network and system, and for taking preventive, corrective, and mitigating actions against security incidents that can lead to a Personal Data breach;

@@ -1,0 +1,1 @@
+ 1. General Epihunter provides the Epihunter Application, a set of tools and applications for people with epilepsy and their relatives and caregivers to improve their quality of life. The Epihunter Application consists of the Epihunter Platform, the Epihunter Mobile Application and the Epihunter Dashboard (each as defined hereinafter and collectively the "Application").

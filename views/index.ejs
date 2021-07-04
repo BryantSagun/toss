@@ -1,0 +1,49 @@
+<!-- display instru -->
+<div class="container-fluid py-5">
+     <div class="row">
+          <div class="col center-align">
+               <img class="w-50" src="/assets/img/home/instrubanner.png" alt="">
+          </div>
+     </div>
+</div>
+<!-- end of instru -->
+
+<div class="container-fluid py-5 center-align">
+     <% if(errors.length > 0) { %>
+          <div class="container-fluid w-50">
+               <div class="col">
+                    <div class="alert alert-danger alert-dismissible fade show text-center" role="alert">
+                         <img class="px-2" src="/assets/img/invalid.png">
+                         <%= errors %>
+                         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                              <span aria-hidden="true">&times;</span>
+                         </button>
+                    </div>
+               </div>
+          </div>
+     <% } %>
+     <div class="row">
+          <div class="col-3"></div>
+          <div class="col-6 box py-3">
+               <h1 class="py-3">- Get started here -</h1>
+               <form action="/analyze" method="POST">
+                    <label class="btn btn-primary">Upload File<input type="file" name="pdf" id="pdf" accept="application/pdf" class='upload-btn' /></label>
+                    <button class="btn btn-primary btn-other" name="analyzeBtn" id="analyzeBtn">Start Analysis</button>
+               </form>
+          </div>
+          <div class="col-3"></div>
+     </div>
+     <div class="row py-5">
+          <div class="col">
+               <h4 id="filename"></h4>
+          </div>
+     </div>
+</div>
+
+<script>
+     $('#pdf').change(function() {
+          pdfFileName = document.getElementById("pdf").value
+          pdfFileName = pdfFileName.split(/(\\|\/)/g).pop()
+          document.getElementById("filename").innerHTML = "File: " + pdfFileName
+     });
+</script>
