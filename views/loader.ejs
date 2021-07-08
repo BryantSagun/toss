@@ -92,9 +92,10 @@
                //document.getElementById("ripple").style.display = "none"
                document.getElementById('predictionStatusText').innerHTML = 'Results are Ready!';
                document.getElementById('ripple').style.display = "none";
-               document.getElementById('results').style.display = "inline";
-               document.getElementById('results').click()
+               document.getElementById('cancelBtn').style.display = "none";
+               document.getElementById('results').style.display = "block";
           }, duration)
+
           document.getElementById('cancelBtn').addEventListener("click", function(){
                return;
           })
