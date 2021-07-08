@@ -1,9 +1,9 @@
 require("@tensorflow/tfjs-node")
+_tokenizer = null
 const fs = require('fs')
 const pdfparse = require('pdf-parse')
 const tf = require('@tensorflow/tfjs')
 const LEN = 50
-_tokenizer = null
 
 let Analyze = function(){}
 
@@ -18,30 +18,15 @@ Analyze.extractTextFromPDF = function(pdf){
      })
 }
 
-Analyze.getDocumentInfo = function(pdf){
+Analyze.getDocumentInfo = function(pdf, documentName){
      return new Promise((resolve, reject) => {
-          pdfparse(pdf).then((data)=>{
-               resolve(data)
+          pdfparse(pdf).then((docInfo)=>{
+               resolve(docInfo, documentName)
           }).catch((err)=>{
                console.log(err)
                reject(err)
           })
      })
-}
-
-Analyze.savePDFContentsInSingleTextFile = function(content){
-     fs.writeFile('./statements/privacy-policy.txt', content, function (err) {
-          if (err) throw err;
-     })
-}
-
-Analyze.savePDFContentsInTextFiles = function(content){
-     for(i=0; i<content.length; i++){
-          console.log('saving statement ' + (i+1) + '...')
-          fs.writeFile('./statements/'+ (i+1) +'.txt', content[i], function (err) {
-               if (err) throw err;
-          })
-     }
 }
 
 Analyze.removeEmptyLines = function(content){
@@ -64,9 +49,10 @@ Analyze.getAllStatements = function(text){
                sharingData: categorizeStatements(text,
                /(third\s)?(part(y|ies)(\s)?)?(may\s)?(also\s)?(shar(e|ed|ing)|disclose)\s?(your(\s)?)?(user(\s)?)?(personal(\s)?)?(information|data(\s)?)?(outside)?/igm),
                updatingToS: categorizeStatements(text,
-               /(reserves\s)?(the)?(right)?(to)?updat(e|ing)(from)?(time\sto\stime)?/igm)
+               /(reserves\s)?(the)?(right)?(to)?updat(e|ing)(from)?(time\sto\stime)?/igm),
           }
-          resolve(statements)
+          totalStmtCount = statements.collectingData.length + statements.usingData.length + statements.sharingData.length + statements.updatingToS.length
+          resolve(statements, totalStmtCount)
      })
 }
 
@@ -128,6 +114,26 @@ preprocess = function(statement,vocab_len){
           tokenized, [[0,0],[0,LEN-slen]]
      )
      return tokenized
+}
+
+
+
+
+
+
+Analyze.savePDFContentsInSingleTextFile = function(content){
+     fs.writeFile('./statements/privacy-policy.txt', content, function (err) {
+          if (err) throw err;
+     })
+}
+
+Analyze.savePDFContentsInTextFiles = function(content){
+     for(i=0; i<content.length; i++){
+          console.log('saving statement ' + (i+1) + '...')
+          fs.writeFile('./statements/'+ (i+1) +'.txt', content[i], function (err) {
+               if (err) throw err;
+          })
+     }
 }
 
 module.exports = Analyze

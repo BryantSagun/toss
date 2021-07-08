@@ -2,22 +2,22 @@
      <div class="col-lg-12">
           <div class="row">
                <div class="col-lg-6">
-                    <h3 class="py-5 text-center">Analyzing document...</h3>
-                    <div id="progbar-out" class="text-center">
-                         <div name="progressPercentage" id="progressPercentage"></div>
+                    <h2 class="py-5 text-center" id="predictionStatusText">Analyzing Document...</h2>
+                    <div class="loader">
+                         <div class="ripple" id="ripple"></div>
                     </div>
-                    <h5 class="m-0 py-5 text-center" name='progressText' id='progressText'></h5>
-                         <div class="d-flex justify-content-center">
-                              <div style='float: left; padding-left: 5px;'>
-                              <form action="/results" method="POST">
-                                   <button class="btn btn-other my-3" name="results" id="results">Get Results</button>
-                              </form>
-                         </div>
+                    <div class="py-5"></div>
+                    <div class="d-flex justify-content-center">
                          <div style='float: left; padding-left: 5px;'>
-                              <form action="/" method="GET">
-                                   <button class="btn btn-cancel my-3">Cancel</button> 
-                              </form>
-                         </div>
+                         <form action="/results" method="POST">
+                              <button class="btn btn-other my-3" name="results" id="results" style="display: none;">Get Results</button>
+                         </form>
+                    </div>
+                    <div style='float: left; padding-left: 5px;'>
+                         <form action="/" method="GET">
+                              <button class="btn btn-cancel my-3" id="cancelBtn">Cancel</button> 
+                         </form>
+                    </div>
                     </div>
                </div>
                <div class="col-lg-6">
@@ -86,15 +86,17 @@
 </div>
 
 <script>
-     function checkPredictionProgress(){
-          const progressPercentage = document.getElementById('progbar-out')
-          const progressText = document.getElementById('progressText')
-          setInterval(function(){
-               
-          }, 1000)
-     }
-
      document.addEventListener('DOMContentLoaded', function(){
-          checkPredictionProgress()
+          duration = '<%= totalStmtCount %>' * 200
+          setTimeout(function(){
+               //document.getElementById("ripple").style.display = "none"
+               document.getElementById('predictionStatusText').innerHTML = 'Results are Ready!';
+               document.getElementById('ripple').style.display = "none";
+               document.getElementById('results').style.display = "inline";
+               document.getElementById('results').click()
+          }, duration)
+          document.getElementById('cancelBtn').addEventListener("click", function(){
+               return;
+          })
      })
 </script>

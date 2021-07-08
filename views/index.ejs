@@ -46,4 +46,11 @@
           pdfFileName = pdfFileName.split(/(\\|\/)/g).pop()
           document.getElementById("filename").innerHTML = "File: " + pdfFileName
      });
+
+     addEventListener("keyup", function(event) {
+          if (event.keyCode === 13) {
+               event.preventDefault();
+               document.getElementById("analyzeBtn").click();
+          }
+     });
 </script>
