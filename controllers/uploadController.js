@@ -7,12 +7,13 @@ exports.index = function(req, res){
 }
 
 exports.upload = function(req, res){
-     file = req.body.pdf
+     file = req.file
      if(file){
+          file = req.file.filename
           Upload.validateFileType(file).then(()=>{
-               pdfparse(file).then(()=>{
+               pdfparse('./tosDocuments/' + file).then(()=>{
                     AnalyzeController.loader(req, res)
-               }).catch(()=>{
+               }).catch((err)=>{
                     req.flash('errors', 'Unknown error occurred.')
                     res.redirect('/')
                })

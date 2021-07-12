@@ -9,18 +9,18 @@
                     <h3>Recommendation Summary for <%= file %> </h3>
                 </div>
             </div>
-            <% if (finalEvaluation > 29) { %>
-                <h3> Document Evaluation Score: <strong style="color: var(--red-);"><%= finalEvaluation %> % </strong></h3>
+            <% if (ratings.sharingDataRating > 0) { %>
+                <h3><strong style="color: var(--red-);">HIGH RISK LEVEL</strong></h3>
                 <img class="results-img py-4" src="/assets/img/results/reject.png" alt="reject">
                 <h4>TOSS advises you to <strong> NOT </strong> accept the terms and conditions!</h4>
                 <p>The terms of service document "<%= file %>" that you have uploaded for analysis contains multiple terms that are not user friendly.</p>
-            <% }else if (finalEvaluation > 19) { %>
-                <h3> Document Evaluation Score: <strong style="color: var(--orange-)"><%= finalEvaluation %> % </strong></h3>
+            <% }else if (ratings.usingDataRating > 0) { %>
+                <h3><strong style="color: var(--orange-)">MODERATE RISK LEVEL</strong></h3>
                 <img class="results-img py-4" src="/assets/img/results/caution.png" alt="caution">
                 <h4>TOSS suggests that you reconsider the terms before accepting.</h4>
                 <p>The terms of service document that you have uploaded for analysis contains a significant number of unfriendly terms.</p>
             <% }else { %>
-                <h3> Document Evaluation Score: <strong style="color: var(--wgreen-);"><%= finalEvaluation %> % </strong></h3>
+                <h3><strong style="color: var(--wgreen-);">MINIMAL RISK LEVEL</strong></h3>
                 <img class="results-img py-4" src="/assets/img/results/good.png" alt="good">
                 <h4>TOSS recommends that you accept the terms!</h4>
                 <p>The terms of service document that you have uploaded for analysis turns out to be good!</p>
@@ -36,24 +36,24 @@
                 <div class="col-6">
                     <img class="results-img-sm py-2" src="/assets/img/results/pie.png" alt="">
                     <h4>Collecting Data</h4>
-                    <h6><%= ratings.collectingDataRating %> % </h6>
+                    <h6><%= ratings.collectingDataRating %></h6>
                 </div>
                 <div class="col-6">
                     <img class="results-img-sm py-2" src="/assets/img/results/doc.png" alt="">
                     <h4>Using Data</h4>
-                    <h6><%= ratings.usingDataRating %> % </h6>
+                    <h6><%= ratings.usingDataRating %></h6>
                 </div>
             </div>
             <div class="row" style="margin-bottom: 20px;">
                 <div class="col-6">
                     <img class="results-img-sm py-2" src="/assets/img/results/share.png" alt="">
                     <h4>Sharing Data</h4>
-                    <h6><%= ratings.sharingDataRating %> % </h6>
+                    <h6><%= ratings.sharingDataRating %></h6>
                 </div>
                 <div class="col-6">
                     <img class="results-img-sm py-2" src="/assets/img/results/update.png" alt="">
                     <h4>Updating TOS</h4>
-                    <h6><%= ratings.updatingToSRating %> % </h6>
+                    <h6><%= ratings.updatingToSRating %></h6>
                 </div>
             </div>
             <div class="py-2">
@@ -78,7 +78,7 @@
                 </div>
             </div>
             <div class="py-2">
-                <form action="/results/download" method="POST">
+                <form action="/results/download" method="POST" id="">
                     <label class="btn btn-primary">Download Report<a href="#" onclick="window.open('../report.pdf', '_blank', 'fullscreen=yes'); return true;" target = "_blank"></a><button type="submit" name="downloadReport" id="downloadReport" class='upload-btn'></a></label>
                </form>
             </div>
@@ -100,3 +100,7 @@
         </div>
     </div>
 </div>
+
+<script>
+
+</script>

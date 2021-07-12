@@ -18,10 +18,10 @@ Analyze.extractTextFromPDF = function(pdf){
      })
 }
 
-Analyze.getDocumentInfo = function(pdf, documentName){
+Analyze.getDocumentInfo = function(pdf){
      return new Promise((resolve, reject) => {
           pdfparse(pdf).then((docInfo)=>{
-               resolve(docInfo, documentName)
+               resolve(docInfo)
           }).catch((err)=>{
                console.log(err)
                reject(err)
@@ -56,7 +56,7 @@ Analyze.getAllStatements = function(text){
      })
 }
 
-Analyze.validateAllStatements = function(statements){
+Analyze.validateAllStatements = function(statements, document){
      return new Promise(async (resolve, reject) => {
           const CollectingModel = await tf.loadLayersModel("http://127.0.0.1:8080/models/collecting/model.json");
           const UsingModel = await tf.loadLayersModel("http://127.0.0.1:8080/models/using/model.json");
@@ -69,7 +69,11 @@ Analyze.validateAllStatements = function(statements){
                sharingPrediction: await predictStatement(statements.sharingData, SharingModel, 759),
                updatingPrediction: await predictStatement(statements.updatingToS, UpdatingModel, 238)
           }
-          resolve(statements, predictions)
+          info = {
+               documentName: document + ""
+          }
+          console.log(info.statistics)
+          resolve(statements, predictions, info)
      })
 }
 

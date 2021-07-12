@@ -9,5 +9,6 @@ exports.results = function(req, res){
 }
 
 exports.report = function(req, res){
-     Result.generateReport(statements, predictions)
+     Result.generateReport(statements,  predictions, totalStmtCount, info)
+     res.render('results')
 }

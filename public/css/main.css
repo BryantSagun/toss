@@ -17,6 +17,7 @@ html, body{
      background-image: url('/assets/img/bg/bg-green.png'); 
      /* background-color: var(--matteblack-); */
      background-size: cover;
+     scroll-behavior: smooth;
 }
 
 header{
