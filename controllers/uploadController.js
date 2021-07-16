@@ -11,7 +11,7 @@ exports.upload = function(req, res){
      if(file){
           file = req.file.filename
           Upload.validateFileType(file).then(()=>{
-               pdfparse('./tosDocuments/' + file).then(()=>{
+               pdfparse('./tosDocumentsServer/' + file).then(()=>{
                     AnalyzeController.loader(req, res)
                }).catch((err)=>{
                     req.flash('errors', 'Unknown error occurred.')

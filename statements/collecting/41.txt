@@ -1,1 +1,0 @@
- Information collected by manual input by the Application, such as seizure onset, etc.

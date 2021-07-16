@@ -1,4 +1,5 @@
 const Result = require('../models/Result')
+const fs = require('fs')
 
 exports.results = function(req, res){
      Result.getDocumentStatistics(predictions).then(() => {
@@ -9,6 +10,7 @@ exports.results = function(req, res){
 }
 
 exports.report = function(req, res){
-     Result.generateReport(statements,  predictions, totalStmtCount, info)
-     res.render('results')
+     Result.generateReport(statements,  predictions, totalStmtCount, info).then(([report, reportName]) => {
+          res.render('results')
+     })
 }

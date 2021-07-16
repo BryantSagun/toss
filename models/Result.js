@@ -1,5 +1,6 @@
 const PDFDocument = require('pdfkit')
 const fs = require('fs')
+const path = require('path')
 
 let Result = function(){}
 
@@ -19,7 +20,8 @@ Result.generateReport = function(statements, predictions, totalStmtCount, info){
      return new Promise((resolve, reject) => {
           let date = new Date();
           const report = new PDFDocument();
-          report.pipe(fs.createWriteStream('tossreport-' + info.documentName))
+          const reportName = 'toss-report' + Date.now() + '-' + info.documentName
+          report.pipe(fs.createWriteStream(path.resolve('./reports/', reportName)))
           report.font('public/fonts/Quicksand-Regular.ttf')
           .fontSize(30)
           // .image('public/assets/img/toss-2.png', {
@@ -28,7 +30,7 @@ Result.generateReport = function(statements, predictions, totalStmtCount, info){
           .text('Terms of Service Simplifier', {
                align: 'center'
           })
-          .fontSize(10)
+          .fontSize(12)
           .text('Summary Report for ' + info.documentName, {
                align: 'center'
           })
@@ -56,17 +58,18 @@ Result.generateReport = function(statements, predictions, totalStmtCount, info){
           .text("Using Data Category: " + statements.usingData.length)
           .text("Sharing Data Category: " + statements.sharingData.length)
           .text("Updating ToS Category: " + statements.updatingToS.length)
-
+          .moveDown(4)
           getListOfStatements(report, statements.collectingData, predictions.collectingPrediction, "Collecting Data Statements")
           getListOfStatements(report, statements.usingData, predictions.usingPrediction, "Using Data Statements")
           getListOfStatements(report, statements.sharingData, predictions.sharingPrediction, "Sharing Data Statements")
           getListOfStatements(report, statements.updatingToS, predictions.updatingPrediction, "Updating ToS Statements")
+
           report.fillColor('black')
           .text('---END OF REPORT---', {
                align: 'center'
           })
           report.end()
-          resolve(report)
+          resolve([report, reportName])
      })
 }
 

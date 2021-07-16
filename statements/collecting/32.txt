@@ -1,1 +1,0 @@
- "Insights" means the data collected via the application and rendered in an optimal way by the Epihunter Platform through the Epihunter Mobile Application and Epihunter Dashboard.

@@ -1,1 +1,0 @@
- Web behavior information such as information related to how the users use the Products (e.g.

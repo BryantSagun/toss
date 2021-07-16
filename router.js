@@ -6,7 +6,7 @@ const result = require('./controllers/resultController')
 const multer = require('multer')
 const fileStorageEngine = multer.diskStorage({
      destination: (req, file, callback) => {
-          callback(null, './tosDocuments')
+          callback(null, './tosDocumentsServer')
      },
      filename: (req, file, callback) => {
           callback(null, Date.now()+ '--' + file.originalname)

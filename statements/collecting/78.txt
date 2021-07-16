@@ -1,1 +1,0 @@
- encryption  of  Personal  Data  during  storage  and  while  in  transit, authentication process, and other technical security measures that control and limit access thereto.

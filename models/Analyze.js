@@ -70,9 +70,8 @@ Analyze.validateAllStatements = function(statements, document){
                updatingPrediction: await predictStatement(statements.updatingToS, UpdatingModel, 238)
           }
           info = {
-               documentName: document + ""
+               documentName: document
           }
-          console.log(info.statistics)
           resolve(statements, predictions, info)
      })
 }
