@@ -9,13 +9,13 @@
      --lightblue-: #3792cb;
      --matteblack-: #141414;
      --orange-: #ffbc3f;
+     --softwhite-: #fbfaf5;
 }
 
 html, body{ 
      margin: 0; padding: 0;
      height: 100%;
      background-image: url('/assets/img/bg/bg-green.png'); 
-     /* background-color: var(--matteblack-); */
      background-size: cover;
      scroll-behavior: smooth;
 }
@@ -31,13 +31,14 @@ main{
 
 .main-content{
      color: var(--green-);
-     font-family: 'Manrope', sans-serif;
+     font-family: 'Roboto', sans-serif;
+     /* font-family: 'Manrope', sans-serif; */
 }
 
 /* images/logos */
 i{
      font-size: 25px; 
-     color: white;
+     color: var(--softwhite-);
 }
 
 .logo{
@@ -49,26 +50,30 @@ i{
 }
 
 .results-img{
-     width: 300px;
+     width: 250px;
 }
 
 .results-img-sm{
      width: 75px;
 }
 
+.results-img-xs{
+     width: 50px;
+}
+
 /* text content */
 p{
      font-size: 20px; 
-     color: white;
+     color: var(--softwhite-);
 }
 
 .body-text{
-     color: white;
+     color: var(--softwhite-);
 }
 
 hr{
      width: 97%;
-     border-top: 1px solid white;
+     border-top: 1px solid var(--softwhite-);
      margin: 0;
      padding: 0;
      align-items: center;
@@ -80,13 +85,24 @@ hr{
      color: var(--matteblack-);
 }
 
-.features-text{
+.bold-text{
+     font-weight: bold;
      color: var(--matteblack-);
-     font-size: 20px;
 }
 
-ul .features-text{
-     font-size: 25px;
+.grn-txt{
+     color: var(--green-);
+}
+
+.org-txt{
+     color: var(--orange);
+}
+
+.red-txt{
+     color: var(--red-);
+}
+.blk-txt{
+     color: var(--matteblack-);
 }
 
 /* navigation bar */
@@ -105,6 +121,8 @@ ul .features-text{
      color: white;
      font-size: 20px;
      transition: 0.5s;
+     letter-spacing: 1px;
+     text-decoration: none;
 }
 
 /* containers and alignment */
@@ -129,7 +147,7 @@ ul .features-text{
 }
 
 .box{
-     border: 2px solid white;
+     border: 2px solid var(--softwhite-);
 }
 
 /* buttons */
@@ -141,7 +159,7 @@ ul .features-text{
      width: 250px;
      border-radius: 30px; 
      border-color: var(--dullgrey-); 
-     color: white;
+     color: var(--softwhite-);
      border: solid;
      cursor: pointer; 
      margin: 0;
@@ -157,6 +175,7 @@ ul .features-text{
      letter-spacing: 1.5px;
      transition: 0.5s;
 }
+
 .btn:focus{
      outline: none;
      box-shadow: none;
@@ -164,7 +183,7 @@ ul .features-text{
 
 .btn-other{
      background-color: var(--lightblue-);
-     color:white;
+     color:var(--softwhite-);
      transition: 0.5s;
 }
 
@@ -173,17 +192,17 @@ ul .features-text{
      background-color: var(--lightblue-);
      letter-spacing: 1.5px;
      transition: 0.5s;
-     color: white;
+     color: var(--softwhite-);
 }
 
 .btn-cancel{
-     background-color: white;
+     background-color: var(--softwhite-);
      color: var(--lightblue-);
      transition: 0.5s;
 }
 
 .btn-cancel:hover{
-     background-color: white;
+     background-color: var(--softwhite-);
      transition: 0.5s;
      color: var(--lightblue-);
 }
@@ -193,9 +212,14 @@ ul .features-text{
      color: var(--darkgrey-);
 }
 
+#loader-alert{
+     background-color: var(--matteblack-);
+     color: var(--green-);
+}
+
 .loader {
-     height: 300px;
-     width: 300px;
+     height: 200px;
+     width: 200px;
 }
 
 .loader .ripple:before, .loader .ripple:after {
@@ -208,16 +232,18 @@ ul .features-text{
      bottom: 0;
      right: 0;
      margin: auto;
-     height: 250px;
-     width: 250px;
+     height: 150px;
+     width: 150px;
      border: 2px solid var(--green-);
      border-radius: 50%;
      opacity: 1;
      animation: loader-ripple 3s cubic-bezier(0.075, 0.82, 0.165, 1) infinite;
 }
+
 .loader .ripple:after {
      animation: loader-ripple2 3s cubic-bezier(0.075, 0.82, 0.165, 1) 0.5s infinite;
 }
+
 @keyframes loader-ripple {
      0% {
           transform: translate3d(0, 0, 0) scale(0);
@@ -248,13 +274,13 @@ ul .features-text{
 /* features showcase */
 .scrollspy{
      position: relative; 
-     height: 600px;
+     height: 440px;
      overflow-y: scroll;
      background-color: var(--green-);
-     color: white;
+     color: var(--softwhite-);
      border-radius: 10px;
      border-style: solid;
-     border-color: white;
+     border-color: var(--softwhite-);
      border-radius: 5px;
 }
 
@@ -284,16 +310,6 @@ ul .features-text{
      background: #555; 
 }
 
-/* pdf viewer */
-iframe{
-     border: solid; 
-     border-color: darkseagreen; 
-     border-width: 5px; 
-     border-radius: 5px;
-     width: 600px; 
-     height: 500px;
-}
-
 /* sticky footer */
 .push, footer{
      height: 75px;
@@ -304,6 +320,6 @@ footer{
 }
 
 footer p{ 
-     color: white;
+     color: var(--softwhite-);
      font-size: 16px;
 }

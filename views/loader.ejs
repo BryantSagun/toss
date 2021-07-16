@@ -2,7 +2,7 @@
      <div class="col-lg-12">
           <div class="row">
                <div class="col-lg-6">
-                    <h2 class="py-5 text-center" id="predictionStatusText">Analyzing Document...</h2>
+                    <h2 class="py-2 text-center" id="predictionStatusText">Analyzing Document...</h2>
                     <div class="d-flex justify-content-center">
                          <div style='float: left; padding-left: 5px;'>
                               <form action="/results" method="POST">
@@ -35,12 +35,12 @@
                              </div>
                              <div class="col-12 p-0">
                                  <div data-spy="scroll" data-target="#list" data-offset="0" class="scrollspy p-4">
-                                        <h1 class="text-center">Relevant Statements in the Document</h1>
+                                        <h1 class="blk-txt bold-text text-center">Relevant Statements in the Document</h1>
                                    <h4 id="collect-data" class="title center-align"><img class="results-img-sm py-3" src="/assets/img/results/doc.png" alt=""> Collecting Data  </h4>
                                         <% if(statements.collectingData.length > 0) { %>
                                              <% statements.collectingData.forEach((statement)=>{ %>
-                                                  <div class="alert alert-info w-100 mx-auto">
-                                                       <%= statement %>
+                                                  <div class="alert alert-info w-100 mx-auto" id="loader-alert">
+                                                       <h5><%= statement %></h5>
                                                   </div>
                                              <% }) %>
                                         <% } %>
@@ -50,8 +50,8 @@
                                    <h4 id="using-data" class="title center-align"><img class="results-img-sm py-3" src="/assets/img/results/pie.png" alt=""> Using Data </h4>
                                         <% if(statements.usingData.length > 0) { %>
                                              <% statements.usingData.forEach((statement)=>{ %>
-                                                  <div class="alert alert-info w-100 mx-auto">
-                                                       <%= statement %>
+                                                  <div class="alert alert-info w-100 mx-auto" id="loader-alert">
+                                                       <h5><%= statement %></h5>
                                                   </div>
                                              <% }) %>
                                         <% } %>
@@ -61,8 +61,8 @@
                                    <h4 id="share-data" class="title center-align"> <img class="results-img-sm py-3" src="/assets/img/results/share.png" alt=""> Sharing Data </h4>
                                         <% if(statements.sharingData.length > 0) { %>
                                              <% statements.sharingData.forEach((statement)=>{ %>
-                                                  <div class="alert alert-info w-100 mx-auto">
-                                                       <%= statement %>
+                                                  <div class="alert alert-info w-100 mx-auto" id="loader-alert">
+                                                       <h5><%= statement %></h5>
                                                   </div>
                                         <% }) %>
                                    <% } %>
@@ -72,8 +72,8 @@
                                    <h4 id="update-tos" class="title center-align"> <img class="results-img-sm py-3" src="/assets/img/results/update.png" alt=""> Updating TOS </h4>
                                         <% if(statements.updatingToS.length > 0) { %>
                                              <% statements.updatingToS.forEach((statement)=>{ %>
-                                                  <div class="alert alert-info w-100 mx-auto">
-                                                       <%= statement %>
+                                                  <div class="alert alert-info w-100 mx-auto" id="loader-alert">
+                                                       <h5><%= statement %></h5>
                                                   </div>
                                              <% }) %>
                                         <% } %>
