@@ -1,5 +1,5 @@
 const Result = require('../models/Result')
-const fs = require('fs')
+const path = require('path')
 
 exports.results = function(req, res){
      Result.getDocumentStatistics(predictions).then(() => {
@@ -11,6 +11,6 @@ exports.results = function(req, res){
 
 exports.report = function(req, res){
      Result.generateReport(statements,  predictions, totalStmtCount, info).then(([report, reportName]) => {
-          res.render('results')
+          res.download(path.resolve('./reports/', reportName), reportName)
      })
 }

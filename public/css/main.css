@@ -271,6 +271,26 @@ hr{
     }
 }
 
+.members{
+     border: 2px solid var(--green-);
+}
+
+.member-picture{
+     width: 200px;
+     height: 200px;
+     border: 2px solid var(--green-);
+     border-radius: 100px;
+     margin-bottom: 10px;
+}
+
+.faqs{
+     margin-top: 50px;
+}
+
+.faquestion{
+     margin-bottom: 30px;
+}
+
 /* features showcase */
 .scrollspy{
      position: relative; 
@@ -311,7 +331,7 @@ hr{
 }
 
 /* sticky footer */
-.push, footer{
+.push{
      height: 75px;
 }
 
@@ -320,6 +340,12 @@ footer{
 }
 
 footer p{ 
-     color: var(--softwhite-);
+     font-family: 'Didact Gothic', sans-serif;
+     color: var(--matteblack-);
      font-size: 16px;
+     font-weight: 600;
+}
+
+.contact-header{
+     font-weight: 300;
 }
