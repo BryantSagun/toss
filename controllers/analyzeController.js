@@ -6,7 +6,7 @@ exports.loader = function(req, res){
      Analyze.extractTextFromPDF(file).then(text => {
           Analyze.getAllStatements(Analyze.removeEmptyLines(text.split('\n'))).then((terms) => {
                res.render('loader')
-               Analyze.validateAllStatements(terms, req.file.originalname)
+               Analyze.validateAllStatements(terms, req.file)
           }).catch(() => {
                res.render('404')
           })

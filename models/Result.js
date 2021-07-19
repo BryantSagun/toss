@@ -1,8 +1,20 @@
 const PDFDocument = require('pdfkit')
 const fs = require('fs')
 const path = require('path')
+const pdfparse = require('pdf-parse')
 
 let Result = function(){}
+
+Result.getDocumentInfo = function(pdf){
+     return new Promise((resolve, reject) => {
+          pdfparse(pdf).then((docInfo)=>{
+               resolve(docInfo)
+          }).catch((err)=>{
+               console.log(err)
+               reject(err)
+          })
+     })
+}
 
 Result.getDocumentStatistics = function(predictions){
      return new Promise((resolve, reject) => {

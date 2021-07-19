@@ -18,17 +18,6 @@ Analyze.extractTextFromPDF = function(pdf){
      })
 }
 
-Analyze.getDocumentInfo = function(pdf){
-     return new Promise((resolve, reject) => {
-          pdfparse(pdf).then((docInfo)=>{
-               resolve(docInfo)
-          }).catch((err)=>{
-               console.log(err)
-               reject(err)
-          })
-     })
-}
-
 Analyze.removeEmptyLines = function(content){
      regexEmptyLine = /^\s*$/
      for(i=0; i<content.length; i++){
@@ -70,9 +59,10 @@ Analyze.validateAllStatements = function(statements, document){
                updatingPrediction: await predictStatement(statements.updatingToS, UpdatingModel, 238)
           }
           info = {
-               documentName: document
+               documentName: document.originalname
           }
-          resolve(statements, predictions, info)
+          pdf = document.filename
+          resolve(statements, predictions, info, pdf)
      })
 }
 
@@ -123,6 +113,17 @@ preprocess = function(statement,vocab_len){
 
 
 
+
+Analyze.getDocumentInfo = function(pdf){
+     return new Promise((resolve, reject) => {
+          pdfparse(pdf).then((docInfo)=>{
+               resolve(docInfo)
+          }).catch((err)=>{
+               console.log(err)
+               reject(err)
+          })
+     })
+}
 
 Analyze.savePDFContentsInSingleTextFile = function(content){
      fs.writeFile('./statements/privacy-policy.txt', content, function (err) {
