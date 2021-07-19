@@ -291,6 +291,29 @@ hr{
      margin-bottom: 30px;
 }
 
+.evaluationLabelBad{
+     background-color: var(--red-);
+     color: var(--matteblack-);
+}
+
+.evaluationLabelGood{
+     background-color: var(--green-);
+     color: var(--matteblack-);
+}
+
+.statementsEvaluation{
+     height: 500px;
+     width: 100vh;
+     overflow-x: hidden;
+     overflow-y: scroll;
+}
+
+.statementEvaluationCategory{
+     background-color: var(--green-);
+     color: var(--matteblack-);
+     font-weight: 900;
+}
+
 /* features showcase */
 .scrollspy{
      position: relative; 
