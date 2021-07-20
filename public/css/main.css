@@ -46,7 +46,10 @@ i{
 }
 
 .title-img{
-     width: 100px;
+     background-color: var(--matteblack-);
+     border-radius: 25px;
+     width: 50px;
+     margin-right: 10px;
 }
 
 .results-img{
