@@ -2,7 +2,7 @@
     <h2 class="py-5">Check out our features!</h2>
     <div class="row">
     <div class="col-3">
-        <div id="list" class="list-group">
+        <div id="list" class="list-group" >
             <a class="list-group-item list-group-item-action" href="#doc-pre">Document Preprocessing</a>
             <a class="list-group-item list-group-item-action" href="#legal">Legal Context Analysis</a>
             <a class="list-group-item list-group-item-action" href="#stat-cat">Statement Categorization</a>
@@ -14,21 +14,21 @@
         <div data-spy="scroll" data-target="#list" data-offset="0" class="scrollspy p-4">
             <div class="container-fluid">
 
-                <div class="row bold-text py-3">
-                    <h4 class="title"><img id="doc-pre" class="title-img py-3" src="/assets/img/features/doc-white.png">&nbsp;Document Preprocessing</h4>
+                <div id="doc-pre" class="row bold-text py-3">
+                    <h4 class="title"><img class="title-img mr-4" src="/assets/img/features/doc-white.png">&nbsp;Document Preprocessing</h4>
                     <p>
                         Data preprocessing converts the user input into a format the model is able to interpret and the activities included in data preprocessing are:
                     </p>
                     <ul>
-                        <div class="row">
+                        <div class="row pt-3">
                             <div class="col-6">
-                                <h4 class="text-center">Word Tokenization</h4>
+                                <h4 class="text-center bold-text">- Word Tokenization -</h4>
                                 <p class="text-justify">
                                     isolate the words in the document and add them to the model's word vocabulary
                                 </p>
                             </div>
                             <div class="col-6">
-                                <h4 class="text-center">Standardization</h4>
+                                <h4 class="text-center bold-text">- Standardization -</h4>
                                 <p class="text-justify">
                                     ensure that the content to be fed into the model is consistent and that includes possibly mispelled words or in different text casing are interpreted the same as the correctly spelled word
                                 </p>
@@ -39,8 +39,8 @@
 
                 <hr class="py-3">
 
-                <div class="row bold-text py-3">
-                    <h4 class="title"><img  id="legal" class="title-img py-3" src="/assets/img/features/scale-white.png">&nbsp;Legal Context Analysis</h4>
+                <div id="legal" class="row bold-text py-3">
+                    <h4 class="title"><img class="title-img mr-4" src="/assets/img/features/scale-white.png">&nbsp;Legal Context Analysis</h4>
                     <p>
                         Application of the Philippine laws stated in the constitution is what TOSS will base its generated judgement on the binding statements included in the terms of service document. Determining whether a statement is in legal compliance and does not heavily favor one party in the terms is a major goal of this feature.
                     </p>
@@ -48,36 +48,45 @@
 
                 <hr class="py-3">
 
-                <div class="row bold-text py-3">
-                    <h4 class="title"><img id="stat-cat" class="title-img py-3" src="/assets/img/features/cat-white.png">&nbsp;Statement Categorization</h4>
+                <div id="stat-cat" class="row bold-text py-3">
+                    <h4 class="title"><img class="title-img mr-4" src="/assets/img/features/cat-white.png">&nbsp;Statement Categorization</h4>
                     <p>
                         TOSS categorizes each identified statement in the terms of service document and groups them according to what stated uses for the data the service has included in the document. These categories that TOSS will be containing the statements are listed as follows:
-        
                     </p>
-                    <ul>
-                        <li><strong>Using Data</strong></li>
-                        <ul>
-                            <li>this category refers to the general use of data by the service company whether it may be related to analytics down to marketing</li>
-                        </ul>
-                        <li><strong>Sharing Data</strong></li>
-                        <ul>
-                            <li>this category refers to the user giving permission to the service company to use their submitted data for purposes that may or may involve company interactions with sister companies or third-party entities</li>
-                        </ul>
-                        <li><strong>Collecting Data</strong></li>
-                        <ul>
-                            <li>this category refers to statements that involve what the service company will type of data they will be collecting from the user such as user activity, ip addresses, and the likes</li>
-                        </ul>
-                        <li><strong>Updating ToS</strong></li>
-                        <ul>
-                            <li>this category refers to statements constructed by the service company that indicate possible future changes to the terms and conditions in which the user may or may not be notified</li>
-                        </ul>   
-                    </ul>
+                    <div class="row pt-3">
+                        <div class="col-6">
+                            <h4 class="text-center bold-text"><img class="results-img-xs pr-2" src="/assets/img/results/doc.png">Using Data</h4>
+                            <p class="text-justify">
+                                this category refers to the general use of data by the service company whether it may be related to analytics down to marketing
+                            </p>
+                        </div>
+                        <div class="col-6">
+                            <h4 class="text-center bold-text"><img class="results-img-xs pr-2" src="/assets/img/results/share.png">Sharing Data</h4>
+                            <p class="text-justify">
+                                this category refers to the user giving permission to the service company to use their submitted data for purposes that may or may involve company interactions with sister companies or third-party entities
+                            </p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-6">
+                            <h4 class="text-center bold-text"><img class="results-img-xs pr-2" src="/assets/img/results/pie.png">Collecting Data</h4>
+                            <p class="text-justify">
+                                this category refers to statements that involve what the service company will type of data they will be collecting from the user such as user activity, ip addresses, and the likes
+                            </p>
+                        </div>
+                        <div class="col-6">
+                            <h4 class="text-center bold-text"><img class="results-img-xs pr-2" src="/assets/img/results/update.png">Updating ToS</h4>
+                            <p class="text-justify">
+                                this category refers to statements constructed by the service company that indicate possible future changes to the terms and conditions in which the user may or may not be notified
+                            </p>
+                        </div>
+                    </div>
                 </div>
 
                 <hr class="py-3">
 
-                <div class="row bold-text py-3">
-                    <h4 class="title"><img id="word-vec" class="title-img py-3" src="/assets/img/features/pin-white.png">&nbsp;Word Vectors</h4>
+                <div id="word-vec" class="row bold-text py-3">
+                    <h4 class="title"><img class="title-img mr-4" src="/assets/img/features/pin-white.png">&nbsp;Word Vectors</h4>
                     <p>
                         The application places the identified words in the word bank in a dimensional plane where they are given their respective values and understanding the relationship between theses words. Some examples of such are words that may have similar meanings, or words that are used together.
                     </p>
@@ -85,8 +94,8 @@
 
                 <hr class="py-3">
 
-                <div class="row bold-text py-3">
-                    <h4 class="title"><img id="doc-rat" class="title-img py-3" src="/assets/img/features/star-white.png">&nbsp;Document Rating</h4>
+                <div id="doc-rat" class="row bold-text py-3">
+                    <h4 class="title"><img class="title-img mr-4" src="/assets/img/features/star-white.png">&nbsp;Document Rating</h4>
                     <p>
                         After analysis, the application does presents its findings in relation to the quality of the document as it was subjected to comparison with its compliance to the Philippine Laws as stated in the constitution and the general recommendation whether to accept the terms, be wary of possible unfair agreements and reject the terms if the results would return unfavorable values.
                     </p>
