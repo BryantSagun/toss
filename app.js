@@ -19,7 +19,7 @@ app.use(express.json())
 app.use(cors())
 app.set('view engine', 'ejs');
 app.use(session({
-     secret: 'secret',
+     secret: 'termsofservicesimplifier',
      cookie: { maxAge: 60000 },
      resave: false,
      saveUninitialized: false

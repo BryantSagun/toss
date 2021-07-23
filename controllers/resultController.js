@@ -1,6 +1,5 @@
 const Result = require('../models/Result')
 const path = require('path')
-const http = require('http');
 goodPredictionCount = 0
 badPredictionCount = 0
 
@@ -11,14 +10,12 @@ exports.results = function(req, res){
           getGoodAndBadPredictionCount(predictions.collectingPrediction)
           getGoodAndBadPredictionCount(predictions.usingPrediction)
           getGoodAndBadPredictionCount(predictions.sharingPrediction)
-          getGoodAndBadPredictionCount(predictions.updatingPrediction)
           Result.getDocumentInfo(path.resolve('./tosDocumentsServer', pdf)).then((docInfo) => {
                req.flash('numpages', docInfo.numpages + '')
                req.flash('statementCount', (
                     statements.collectingData.length + 
                     statements.usingData.length +
-                    statements.sharingData.length +
-                    statements.updatingToS.length) + '')
+                    statements.sharingData.length) + '')
                req.flash('goodPredictionCount', goodPredictionCount+'')
                req.flash('badPredictionCount', badPredictionCount+'')
                res.render('results', {
@@ -39,10 +36,7 @@ exports.results = function(req, res){
 
 exports.report = function(req, res){
      Result.generateReport(statements,  predictions, totalStmtCount, info).then(([report, reportName]) => {
-          http.get("/results/download"+reportName, function(response) {
-               response.pipe();
-          });
-          //res.download(path.resolve('./reports/', reportName))
+          res.download(path.resolve('./reports/', reportName))
      })
 }
 
