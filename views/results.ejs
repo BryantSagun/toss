@@ -29,6 +29,7 @@
             <div class="py-2">
                 <div class="col">
                     <h3>Category Analytics</h3>
+                    <h5>ambiguous statements per category</h5>
                 </div>
             </div>
             <div class="row">
@@ -44,15 +45,10 @@
                 </div>
             </div>
             <div class="row" style="margin-bottom: 20px;">
-                <div class="col-6">
+                <div class="col-12 text-center">
                     <img class="results-img-xs py-2" src="/assets/img/results/share.png" alt="">
                     <h5>Sharing Data</h5>
                     <h6><%= ratings.sharingDataRating %> statements</h6>
-                </div>
-                <div class="col-6">
-                    <img class="results-img-xs py-2" src="/assets/img/results/update.png" alt="">
-                    <h5>Updating TOS</h5>
-                    <h6><%= ratings.updatingToSRating %> statements</h6>
                 </div>
             </div>
             <div class="py-2">
@@ -68,16 +64,16 @@
                     <div class="col-4 text-center"><%= statementCount %></div>
                 </div>
                 <div class="row">
-                    <div class="col-8 text-left">Number of Lawful Statements Detected: </div>
+                    <div class="col-8 text-left">Number of Good Statements Detected: </div>
                     <div class="col-4 text-center"><%= goodPredictionCount %></div>
                 </div>
                 <div class="row">
-                    <div class="col-8 text-left">Number of Unlawful Statements Detected: </div>
+                    <div class="col-8 text-left">Number of Risky Statements Detected: </div>
                     <div class="col-4 text-center"><%= badPredictionCount %></div>
                 </div>
             </div>
             <div class="py-2">
-                <form action="/results/download" method="POST" id="">
+                <form action="/results/download" method="GET" id="">
                     <label class="btn btn-primary">Download Report<a href='#' target="_blank"><button type="submit" name="downloadReport" id="downloadReport" class='upload-btn'></a></label>
                </form>
             </div>
@@ -88,9 +84,88 @@
 
     <hr class="center-align w-100 my-4">
 
+    <!-- statements evaluation -->
+
+    <div>
+        <h1 class="text-center pb-3">Assessment results for each statement</h1>
+        <div class="statementsEvaluation w-100">
+    
+            <h2 class="statementEvaluationCategory my-4 pl-3 py-3">Collecting Data Statements</h2>
+            <% count = 0 %>
+            <% statements.collectingData.forEach((statement)=>{ %>
+                <div class="row">
+                    <div class="col-10">
+                        <% if(count % 2 == 0){ %>
+                            <h5 class="text-justify"><%= statement %></h5>
+                        <% } else { %>
+                            <h5 class="text-justify wht-txt"><%= statement %></h5>
+                        <% } %>
+                   </div>
+                   <div class="col-2">
+                        <% if(predictions.collectingPrediction[count] == 0) { %>
+                            <h5 class="text-center bold-text evaluationLabelBadModerate">RISKY</h5>
+                        <% } else { %>
+                            <h5 class="text-center bold-text evaluationLabelGood">GOOD</h5>
+                        <% } %>
+                  </div>
+                </div>
+                <% count++ %>
+            <% }) %>
+    
+            <h2 class="statementEvaluationCategory my-4 pl-3 py-3">Using Data Statements</h2>
+            <% count = 0 %>
+            <% statements.usingData.forEach((statement)=>{ %>
+                <div class="row">
+                    <div class="col-10">
+                        <% if(count % 2 == 0){ %>
+                            <h5 class="text-justify"><%= statement %></h5>
+                        <% } else { %>
+                            <h5 class="text-justify wht-txt"><%= statement %></h5>
+                        <% } %>
+                   </div>
+                   <div class="col-2">
+                        <% if(predictions.usingPrediction[count] == 0) { %>
+                            <h5 class="text-center bold-text evaluationLabelBadModerate">RISKY</h5>
+                        <% } else { %>
+                            <h5 class="text-center bold-text evaluationLabelGood">GOOD</h5>
+                        <% } %>
+                  </div>
+                </div>
+                <% count++ %>
+            <% }) %>
+    
+            <h2 class="statementEvaluationCategory my-4 pl-3 py-3">Sharing Data Statements</h2>
+            <% count = 0 %>
+            <% statements.sharingData.forEach((statement)=>{ %>
+                <div class="row">
+                    <div class="col-10">
+                        <% if(count % 2 == 0){ %>
+                            <h5 class="text-justify"><%= statement %></h5>
+                        <% } else { %>
+                            <h5 class="text-justify wht-txt"><%= statement %></h5>
+                        <% } %>
+                   </div>
+                   <div class="col-2">
+                        <% if(predictions.sharingPrediction[count] == 0) { %>
+                            <h5 class="text-center bold-text evaluationLabelBadHigh">VERY RISKY</h5>
+                        <% } else { %>
+                            <h5 class="text-center bold-text evaluationLabelGood">GOOD</h5>
+                        <% } %>
+                  </div>
+                </div>
+                <% count++ %>
+            <% }) %>
+        </div>
+    </div>
+
+
+    <!-- end of statements evaluation -->
+
+    <hr class="center-align w-100 my-4">
+
     <div class="px-3">
         <div class="text-center">
-            <h1>Learn more about the document evaluation</h1>
+            <h1 class="pb-3">Learn more about the document evaluation</h1>
         </div>
         <div>
             <div class="row">
@@ -112,5 +187,5 @@
 </div>
 
 <script>
-
+    window.open(response.data.path, '_blank');
 </script>

@@ -46,7 +46,10 @@ i{
 }
 
 .title-img{
-     width: 100px;
+     background-color: var(--matteblack-);
+     border: 2px solid var(--matteblack-);
+     width: 70px;
+     border-radius: 35px;
 }
 
 .results-img{
@@ -103,6 +106,10 @@ hr{
 }
 .blk-txt{
      color: var(--matteblack-);
+}
+
+.wht-txt{
+     color: var(--softwhite-);
 }
 
 /* navigation bar */
@@ -291,6 +298,34 @@ hr{
      margin-bottom: 30px;
 }
 
+.evaluationLabelBadHigh{
+     background-color: var(--red-);
+     color: var(--matteblack-);
+}
+
+.evaluationLabelBadModerate{
+     background-color: var(--orange-);
+     color: var(--matteblack-);
+}
+
+.evaluationLabelGood{
+     background-color: var(--green-);
+     color: var(--matteblack-);
+}
+
+.statementsEvaluation{
+     height: 500px;
+     width: 100vh;
+     overflow-x: hidden;
+     overflow-y: scroll;
+}
+
+.statementEvaluationCategory{
+     background-color: var(--green-);
+     color: var(--matteblack-);
+     font-weight: 900;
+}
+
 /* features showcase */
 .scrollspy{
      position: relative; 
@@ -311,6 +346,7 @@ hr{
 .list-group-item{
      color: var(--matteblack-);
      font-size: 20px;
+     font-weight: bold;
 }
 
 /* scrollbar mod */
@@ -348,4 +384,26 @@ footer p{
 
 .contact-header{
      font-weight: 300;
+}
+
+@media all and (min-width: 992px) {
+	.navbar .nav-item .dropdown-menu{ display: none; }
+	.navbar .nav-item:hover .dropdown-menu{ display: block; }
+	.navbar .nav-item .dropdown-menu{ margin-top:0; }
+}
+
+.dropdown-menu{
+     background: var(--green-);
+     border: solid 1px var(--softwhite-);
+}
+
+.dropdown-item{
+     font-size: 19px;
+     color: var(--softwhite-);
+}
+
+.dropdown-item:hover{
+     background-color: var(--green-);
+     color: var(--matteblack-);
+     transition: 0.5s;
 }

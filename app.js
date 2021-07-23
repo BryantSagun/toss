@@ -19,7 +19,7 @@ app.use(express.json())
 app.use(cors())
 app.set('view engine', 'ejs');
 app.use(session({
-     secret: 'secret',
+     secret: 'termsofservicesimplifier',
      cookie: { maxAge: 60000 },
      resave: false,
      saveUninitialized: false
@@ -30,13 +30,5 @@ app.use(function(req, res){
      res.status(404)
      res.render('404')
 })
-
-// const mongoose = require('mongoose')
-// const dbURI = 'mongodb+srv://tossadmin:tossadmin@cluster0.th2be.mongodb.net/toss?retryWrites=true&w=majority';
-// mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true }).then(()=>{
-//      app.listen(PORT);
-// }).catch((err) => {
-//      console.log(err)
-// })
 
 app.listen(PORT);

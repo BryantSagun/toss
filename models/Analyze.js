@@ -36,11 +36,11 @@ Analyze.getAllStatements = function(text){
                usingData: categorizeStatements(text,
                /(may\s)?(also\s)?(us(e|ing)(?!r)|process)(personal\s)?((information|data)?)/igm),
                sharingData: categorizeStatements(text,
-               /(third\s)?(part(y|ies)(\s)?)?(may\s)?(also\s)?(shar(e|ed|ing)|disclose)\s?(your(\s)?)?(user(\s)?)?(personal(\s)?)?(information|data(\s)?)?(outside)?/igm),
-               updatingToS: categorizeStatements(text,
-               /(reserves\s)?(the)?(right)?(to)?updat(e|ing)(from)?(time\sto\stime)?/igm),
+               /(third\s)?(part(y|ies)(\s)?)?(may\s)?(also\s)?(shar(e|ed|ing)|disclose)\s?(your(\s)?)?(user(\s)?)?(personal(\s)?)?(information|data(\s)?)?(outside)?/igm)
+               // updatingToS: categorizeStatements(text,
+               // /(reserves\s)?(the)?(right)?(to)?updat(e|ing)(from)?(time\sto\stime)?/igm),
           }
-          totalStmtCount = statements.collectingData.length + statements.usingData.length + statements.sharingData.length + statements.updatingToS.length
+          totalStmtCount = statements.collectingData.length + statements.usingData.length + statements.sharingData.length
           resolve(statements, totalStmtCount)
      })
 }
@@ -50,13 +50,13 @@ Analyze.validateAllStatements = function(statements, document){
           const CollectingModel = await tf.loadLayersModel("http://127.0.0.1:8080/models/collecting/model.json");
           const UsingModel = await tf.loadLayersModel("http://127.0.0.1:8080/models/using/model.json");
           const SharingModel = await tf.loadLayersModel("http://127.0.0.1:8080/models/sharing/model.json");
-          const UpdatingModel = await tf.loadLayersModel("http://127.0.0.1:8080/models/updating/model.json");
+          //const UpdatingModel = await tf.loadLayersModel("http://127.0.0.1:8080/models/updating/model.json");
           _tokenizer = await tokenizer
           predictions = {
                collectingPrediction: await predictStatement(statements.collectingData, CollectingModel, 925),
                usingPrediction: await predictStatement(statements.usingData, UsingModel, 845),
                sharingPrediction: await predictStatement(statements.sharingData, SharingModel, 759),
-               updatingPrediction: await predictStatement(statements.updatingToS, UpdatingModel, 238)
+               //updatingPrediction: await predictStatement(statements.updatingToS, UpdatingModel, 238)
           }
           info = {
                documentName: document.originalname
