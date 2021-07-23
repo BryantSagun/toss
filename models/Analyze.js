@@ -54,7 +54,7 @@ Analyze.validateAllStatements = function(statements, document){
           predictions = {
                collectingPrediction: await predictStatement(statements.collectingData, CollectingModel, 1015),
                usingPrediction: await predictStatement(statements.usingData, UsingModel, 923),
-               sharingPrediction: await predictStatement(statements.sharingData, SharingModel, 805)
+               sharingPrediction: await predictStatement(statements.sharingData, SharingModel, 803)
           }
           info = {
                documentName: document.originalname
