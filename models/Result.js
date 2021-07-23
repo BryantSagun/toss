@@ -31,7 +31,7 @@ Result.getDocumentStatistics = function(predictions){
 Result.generateReport = function(statements, predictions, totalStmtCount, info){
      return new Promise((resolve, reject) => {
           let date = new Date();
-          const report = new PDFDocument();
+          const report = new PDFDocument({compress:false} );
           const reportName = 'toss-report' + Date.now() + '-' + info.documentName
           report.pipe(fs.createWriteStream(path.resolve('./reports/', reportName)))
           report.font('public/fonts/Quicksand-Regular.ttf')

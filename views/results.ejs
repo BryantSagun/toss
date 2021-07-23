@@ -78,7 +78,7 @@
                 </div>
             </div>
             <div class="py-2">
-                <form action="/results/download" method="POST" id="">
+                <form action="/results/download" method="GET" id="">
                     <label class="btn btn-primary">Download Report<a href='#' target="_blank"><button type="submit" name="downloadReport" id="downloadReport" class='upload-btn'></a></label>
                </form>
             </div>
@@ -101,7 +101,7 @@
                </div>
                <div class="col-2">
                     <% if(predictions.collectingPrediction[count] == 0) { %>
-                        <h5 class="text-center evaluationLabelBad">BAD</h5>
+                        <h5 class="text-center evaluationLabelBadModerate">RISKY</h5>
                     <% } else { %>
                         <h5 class="text-center evaluationLabelGood">GOOD</h5>
                     <% } %>
@@ -119,7 +119,7 @@
                </div>
                <div class="col-2">
                     <% if(predictions.usingPrediction[count] == 0) { %>
-                        <h5 class="text-center evaluationLabelBad">BAD</h5>
+                        <h5 class="text-center evaluationLabelBadModerate">RISKY</h5>
                     <% } else { %>
                         <h5 class="text-center evaluationLabelGood">GOOD</h5>
                     <% } %>
@@ -137,7 +137,7 @@
                </div>
                <div class="col-2">
                     <% if(predictions.sharingPrediction[count] == 0) { %>
-                        <h5 class="text-center evaluationLabelBad">BAD</h5>
+                        <h5 class="text-center evaluationLabelBadHigh">VERY RISKY</h5>
                     <% } else { %>
                         <h5 class="text-center evaluationLabelGood">GOOD</h5>
                     <% } %>
@@ -155,7 +155,7 @@
                </div>
                <div class="col-2">
                     <% if(predictions.updatingPrediction[count] == 0) { %>
-                        <h5 class="text-center evaluationLabelBad">BAD</h5>
+                        <h5 class="text-center evaluationLabelBadHigh">RISKY</h5>
                     <% } else { %>
                         <h5 class="text-center evaluationLabelGood">GOOD</h5>
                     <% } %>
@@ -163,6 +163,7 @@
             </div>
             <% count++ %>
         <% }) %>
+        <% count = 0 %>
     </div>
 
     <hr class="center-align w-100 my-4">
@@ -191,5 +192,5 @@
 </div>
 
 <script>
-
+    window.open(response.data.path, '_blank');
 </script>

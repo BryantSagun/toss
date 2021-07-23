@@ -31,12 +31,4 @@ app.use(function(req, res){
      res.render('404')
 })
 
-// const mongoose = require('mongoose')
-// const dbURI = 'mongodb+srv://tossadmin:tossadmin@cluster0.th2be.mongodb.net/toss?retryWrites=true&w=majority';
-// mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true }).then(()=>{
-//      app.listen(PORT);
-// }).catch((err) => {
-//      console.log(err)
-// })
-
 app.listen(PORT);

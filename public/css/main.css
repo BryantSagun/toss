@@ -294,8 +294,13 @@ hr{
      margin-bottom: 30px;
 }
 
-.evaluationLabelBad{
+.evaluationLabelBadHigh{
      background-color: var(--red-);
+     color: var(--matteblack-);
+}
+
+.evaluationLabelBadModerate{
+     background-color: var(--orange-);
      color: var(--matteblack-);
 }
 
