@@ -53,9 +53,9 @@ Analyze.validateAllStatements = function(statements, document){
           //const UpdatingModel = await tf.loadLayersModel("http://127.0.0.1:8080/models/updating/model.json");
           _tokenizer = await tokenizer
           predictions = {
-               collectingPrediction: await predictStatement(statements.collectingData, CollectingModel, 925),
-               usingPrediction: await predictStatement(statements.usingData, UsingModel, 845),
-               sharingPrediction: await predictStatement(statements.sharingData, SharingModel, 759),
+               collectingPrediction: await predictStatement(statements.collectingData, CollectingModel, 1015),
+               usingPrediction: await predictStatement(statements.usingData, UsingModel, 923),
+               sharingPrediction: await predictStatement(statements.sharingData, SharingModel, 803),
                //updatingPrediction: await predictStatement(statements.updatingToS, UpdatingModel, 238)
           }
           info = {
