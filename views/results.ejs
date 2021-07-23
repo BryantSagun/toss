@@ -89,88 +89,110 @@
 
     <hr class="center-align w-100 my-4">
 
-    <div class="statementsEvaluation w-100">
-        <h3 class="text-center push">Assessment results for each statement</h3>
+    <!-- statements evaluation -->
 
-        <h2 class="statementEvaluationCategory my-4">Collecting Data Statements</h2>
-        <% count = 0 %>
-        <% statements.collectingData.forEach((statement)=>{ %>
-            <div class="row">
-                <div class="col-10">
-                    <h5 class="text-justify"><%= statement %></h5>
-               </div>
-               <div class="col-2">
-                    <% if(predictions.collectingPrediction[count] == 0) { %>
-                        <h5 class="text-center evaluationLabelBadModerate">RISKY</h5>
-                    <% } else { %>
-                        <h5 class="text-center evaluationLabelGood">GOOD</h5>
-                    <% } %>
-              </div>
-            </div>
-            <% count++ %>
-        <% }) %>
-
-        <h2 class="statementEvaluationCategory my-4">Using Data Statements</h2>
-        <% count = 0 %>
-        <% statements.usingData.forEach((statement)=>{ %>
-            <div class="row">
-                <div class="col-10">
-                    <h5 class="text-justify"><%= statement %></h5>
-               </div>
-               <div class="col-2">
-                    <% if(predictions.usingPrediction[count] == 0) { %>
-                        <h5 class="text-center evaluationLabelBadModerate">RISKY</h5>
-                    <% } else { %>
-                        <h5 class="text-center evaluationLabelGood">GOOD</h5>
-                    <% } %>
-              </div>
-            </div>
-            <% count++ %>
-        <% }) %>
-
-        <h2 class="statementEvaluationCategory my-4">Sharing Data Statements</h2>
-        <% count = 0 %>
-        <% statements.sharingData.forEach((statement)=>{ %>
-            <div class="row">
-                <div class="col-10">
-                    <h5 class="text-justify"><%= statement %></h5>
-               </div>
-               <div class="col-2">
-                    <% if(predictions.sharingPrediction[count] == 0) { %>
-                        <h5 class="text-center evaluationLabelBadHigh">VERY RISKY</h5>
-                    <% } else { %>
-                        <h5 class="text-center evaluationLabelGood">GOOD</h5>
-                    <% } %>
-              </div>
-            </div>
-            <% count++ %>
-        <% }) %>
-
-        <h2 class="statementEvaluationCategory my-4">Updating ToS Statements</h2>
-        <% count = 0 %>
-        <% statements.updatingToS.forEach((statement)=>{ %>
-            <div class="row">
-                <div class="col-10">
-                    <h5 class="text-justify"><%= statement %></h5>
-               </div>
-               <div class="col-2">
-                    <% if(predictions.updatingPrediction[count] == 0) { %>
-                        <h5 class="text-center evaluationLabelBadHigh">RISKY</h5>
-                    <% } else { %>
-                        <h5 class="text-center evaluationLabelGood">GOOD</h5>
-                    <% } %>
-              </div>
-            </div>
-            <% count++ %>
-        <% }) %>
-        <% count = 0 %>
+    <div>
+        <h1 class="text-center pb-3">Assessment results for each statement</h1>
+        <div class="statementsEvaluation w-100">
+    
+            <h2 class="statementEvaluationCategory my-4 pl-3 py-3">Collecting Data Statements</h2>
+            <% count = 0 %>
+            <% statements.collectingData.forEach((statement)=>{ %>
+                <div class="row">
+                    <div class="col-10">
+                        <% if(count % 2 == 0){ %>
+                            <h5 class="text-justify"><%= statement %></h5>
+                        <% } else { %>
+                            <h5 class="text-justify wht-txt"><%= statement %></h5>
+                        <% } %>
+                   </div>
+                   <div class="col-2">
+                        <% if(predictions.collectingPrediction[count] == 0) { %>
+                            <h5 class="text-center bold-text evaluationLabelBad">BAD</h5>
+                        <% } else { %>
+                            <h5 class="text-center bold-text evaluationLabelGood">GOOD</h5>
+                        <% } %>
+                  </div>
+                </div>
+                <% count++ %>
+            <% }) %>
+    
+            <h2 class="statementEvaluationCategory my-4 pl-3 py-3">Using Data Statements</h2>
+            <% count = 0 %>
+            <% statements.usingData.forEach((statement)=>{ %>
+                <div class="row">
+                    <div class="col-10">
+                        <% if(count % 2 == 0){ %>
+                            <h5 class="text-justify"><%= statement %></h5>
+                        <% } else { %>
+                            <h5 class="text-justify wht-txt"><%= statement %></h5>
+                        <% } %>
+                   </div>
+                   <div class="col-2">
+                        <% if(predictions.usingPrediction[count] == 0) { %>
+                            <h5 class="text-center bold-text evaluationLabelBad">BAD</h5>
+                        <% } else { %>
+                            <h5 class="text-center bold-text evaluationLabelGood">GOOD</h5>
+                        <% } %>
+                  </div>
+                </div>
+                <% count++ %>
+            <% }) %>
+    
+            <h2 class="statementEvaluationCategory my-4 pl-3 py-3">Sharing Data Statements</h2>
+            <% count = 0 %>
+            <% statements.sharingData.forEach((statement)=>{ %>
+                <div class="row">
+                    <div class="col-10">
+                        <% if(count % 2 == 0){ %>
+                            <h5 class="text-justify"><%= statement %></h5>
+                        <% } else { %>
+                            <h5 class="text-justify wht-txt"><%= statement %></h5>
+                        <% } %>
+                   </div>
+                   <div class="col-2">
+                        <% if(predictions.sharingPrediction[count] == 0) { %>
+                            <h5 class="text-center bold-text evaluationLabelBad">BAD</h5>
+                        <% } else { %>
+                            <h5 class="text-center bold-text evaluationLabelGood">GOOD</h5>
+                        <% } %>
+                  </div>
+                </div>
+                <% count++ %>
+            <% }) %>
+    
+            <h2 class="statementEvaluationCategory my-4 pl-3 py-3">Updating ToS Statements</h2>
+            <% count = 0 %>
+            <% statements.updatingToS.forEach((statement)=>{ %>
+                <div class="row">
+                    <div class="col-10">
+                        <% if(count % 2 == 0){ %>
+                            <h5 class="text-justify"><%= statement %></h5>
+                        <% } else { %>
+                            <h5 class="text-justify wht-txt"><%= statement %></h5>
+                        <% } %>
+                   </div>
+                   <div class="col-2">
+                        <% if(predictions.updatingPrediction[count] == 0) { %>
+                            <h5 class="text-center bold-text evaluationLabelBad">BAD</h5>
+                        <% } else { %>
+                            <h5 class="text-center bold-text evaluationLabelGood">GOOD</h5>
+                        <% } %>
+                  </div>
+                </div>
+                <% count++ %>
+            <% }) %>
+        </div>
     </div>
+
+
+    <!-- end of statements evaluation -->
 
     <hr class="center-align w-100 my-4">
 
     <div class="px-3">
         <div class="text-center">
-            <h1>Learn more about the document evaluation</h1>
+            <h1 class="pb-3">Learn more about the document evaluation</h1>
         </div>
         <div>
             <div class="row">
