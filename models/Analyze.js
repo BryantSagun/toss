@@ -3,7 +3,7 @@ _tokenizer = null
 const fs = require('fs')
 const pdfparse = require('pdf-parse')
 const tf = require('@tensorflow/tfjs')
-const LEN = 50
+const LEN = 70
 
 let Analyze = function(){}
 
@@ -55,7 +55,7 @@ Analyze.validateAllStatements = function(statements, document){
           predictions = {
                collectingPrediction: await predictStatement(statements.collectingData, CollectingModel, 1015),
                usingPrediction: await predictStatement(statements.usingData, UsingModel, 923),
-               sharingPrediction: await predictStatement(statements.sharingData, SharingModel, 803),
+               sharingPrediction: await predictStatement(statements.sharingData, SharingModel, 805),
                //updatingPrediction: await predictStatement(statements.updatingToS, UpdatingModel, 238)
           }
           info = {
