@@ -59,12 +59,12 @@
                                         <% }) %>
                                    <% } %>
                     
-                                   <hr class="py-4">
+                                   <hr  style="display: none" class="py-4">
                          
-                                   <h4 id="update-tos" class="title center-align"> <img class="results-img-sm py-3" src="/assets/img/results/update.png" alt=""> Updating TOS </h4>
+                                   <h4 id="update-tos" style="display: none" class="title center-align"> <img class="results-img-sm py-3" src="/assets/img/results/update.png" alt=""> Updating TOS </h4>
                                         <% if(statements.updatingToS.length > 0) { %>
                                              <% statements.updatingToS.forEach((statement)=>{ %>
-                                                  <div class="alert alert-info w-100 mx-auto" id="loader-alert">
+                                                  <div  style="display: none" class="alert alert-info w-100 mx-auto" id="loader-alert">
                                                        <h5><%= statement %></h5>
                                                   </div>
                                              <% }) %>

@@ -45,12 +45,12 @@
                 </div>
             </div>
             <div class="row" style="margin-bottom: 20px;">
-                <div class="col-6">
+                <div class="col-12">
                     <img class="results-img-xs py-2" src="/assets/img/results/share.png" alt="">
                     <h5>Sharing Data</h5>
                     <h6><%= ratings.sharingDataRating %> statements</h6>
                 </div>
-                <div class="col-6">
+                <div style="display:none;" class="col-6">
                     <img class="results-img-xs py-2" src="/assets/img/results/update.png" alt="">
                     <h5>Updating TOS</h5>
                     <h6><%= ratings.updatingToSRating %> statements</h6>
@@ -161,10 +161,10 @@
                 <% count++ %>
             <% }) %>
     
-            <h2 class="statementEvaluationCategory my-4 pl-3 py-3">Updating ToS Statements</h2>
+            <h2  style="display: none" class="statementEvaluationCategory my-4 pl-3 py-3">Updating ToS Statements</h2>
             <% count = 0 %>
             <% statements.updatingToS.forEach((statement)=>{ %>
-                <div class="row">
+                <div  style="display: none" class="row">
                     <div class="col-10">
                         <% if(count % 2 == 0){ %>
                             <h5 class="text-justify"><%= statement %></h5>
