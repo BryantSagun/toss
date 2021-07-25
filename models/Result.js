@@ -22,7 +22,6 @@ Result.getDocumentStatistics = function(predictions){
                collectingDataRating: getBadStmtCount(predictions.collectingPrediction),
                usingDataRating: getBadStmtCount(predictions.usingPrediction),
                sharingDataRating: getBadStmtCount(predictions.sharingPrediction),
-               updatingToSRating: getBadStmtCount(predictions.updatingPrediction)
           }
           resolve(ratings)
      })
@@ -31,14 +30,11 @@ Result.getDocumentStatistics = function(predictions){
 Result.generateReport = function(statements, predictions, totalStmtCount, info){
      return new Promise((resolve, reject) => {
           let date = new Date();
-          const report = new PDFDocument();
+          const report = new PDFDocument({compress:false} );
           const reportName = 'toss-report' + Date.now() + '-' + info.documentName
           report.pipe(fs.createWriteStream(path.resolve('./reports/', reportName)))
-          report.font('public/fonts/Quicksand-Regular.ttf')
+          report.font('public/fonts/Bronova-Bold.ttf')
           .fontSize(30)
-          // .image('public/assets/img/toss-2.png', {
-          //      fit: [50, 50],
-          // })
           .text('Terms of Service Simplifier', {
                align: 'center'
           })
@@ -47,6 +43,7 @@ Result.generateReport = function(statements, predictions, totalStmtCount, info){
                align: 'center'
           })
           .moveDown(4)
+          .font('public/fonts/Bronova-Regular.ttf')
           .text("Date: "
           + (date.getMonth()+1) + "/"
           + date.getDate() + "/"
@@ -64,17 +61,17 @@ Result.generateReport = function(statements, predictions, totalStmtCount, info){
           + date.getSeconds()
           + (date.getHours()<12?'am':'pm'))
           .moveDown(2)
+          .text("Document Statistics")
+          .moveDown(1)
           .text("Total number of statements: " +
           totalStmtCount)
           .text("Collecting Data Category: " + statements.collectingData.length)
           .text("Using Data Category: " + statements.usingData.length)
           .text("Sharing Data Category: " + statements.sharingData.length)
-          .text("Updating ToS Category: " + statements.updatingToS.length)
           .moveDown(4)
           getListOfStatements(report, statements.collectingData, predictions.collectingPrediction, "Collecting Data Statements")
           getListOfStatements(report, statements.usingData, predictions.usingPrediction, "Using Data Statements")
           getListOfStatements(report, statements.sharingData, predictions.sharingPrediction, "Sharing Data Statements")
-          getListOfStatements(report, statements.updatingToS, predictions.updatingPrediction, "Updating ToS Statements")
 
           report.fillColor('black')
           .text('---END OF REPORT---', {
@@ -87,20 +84,20 @@ Result.generateReport = function(statements, predictions, totalStmtCount, info){
 
 getListOfStatements = function(report, statements, predictions, category){
      count = 1
-     report.fill('black').text(category, {
-          align: 'center'
-     })
+     report
+     .fontSize(20)
+     .lineGap(20)
+     .fill('black').text(category)
+     .lineGap(2)
+     .fontSize(12)
      statements.forEach(statement => {
-          if(predictions[count-1] == 0) report.fillColor('red').text("["+count+"] " + statement, {
-               align: 'justify'
-          })
-          else report.fill('black').text("["+count+"] " + statement, {
+          report.text("["+count+"] " + statement, {
                align: 'justify'
           })
           count++
      })
      report
-     .moveDown()
+     .moveDown(3)
 }
 
 evaluateRatings = function(ratings){
