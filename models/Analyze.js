@@ -52,9 +52,9 @@ Analyze.validateAllStatements = function(statements, document){
           const SharingModel = await tf.loadLayersModel("http://127.0.0.1:8080/models/sharing/model.json");
           _tokenizer = await tokenizer
           predictions = {
-               collectingPrediction: await predictStatement(statements.collectingData, CollectingModel, 1015),
-               usingPrediction: await predictStatement(statements.usingData, UsingModel, 923),
-               sharingPrediction: await predictStatement(statements.sharingData, SharingModel, 803)
+               collectingPrediction: await predictStatement(statements.collectingData, CollectingModel, 1014),
+               usingPrediction: await predictStatement(statements.usingData, UsingModel, 922),
+               sharingPrediction: await predictStatement(statements.sharingData, SharingModel, 802)
           }
           info = {
                documentName: document.originalname
