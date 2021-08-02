@@ -4,17 +4,30 @@ const fs = require('fs')
 const pdfparse = require('pdf-parse')
 const tf = require('@tensorflow/tfjs')
 const LEN = 70
+const Statementss = require('./Statements')
 
 let Analyze = function(){}
 
 Analyze.extractTextFromPDF = function(pdf){
      return new Promise((resolve, reject) => {
           pdfparse(pdf).then((data)=>{
-               resolve(separateSentences(data.text))
+               resolve(data.text)
           }).catch((err)=>{
                console.log(err)
                reject(err)
           })
+     })
+}
+
+Analyze.separateSentences = function(content){
+     return new Promise((resolve, reject) => {
+          regexRemoveNextLine = /(\r\n|\n|\r)/gm
+          regexAddNextLine = /(?<![0-9]|www|e|inc|my)\.(?!com|net|g\.)|;|•/ig
+          regexReplace = /•|●|○/ig
+          content = content.replace(regexRemoveNextLine, "")
+          content = content.replace(regexAddNextLine, "$&\n")
+          content = content.replace(regexReplace, "")
+          resolve(content)
      })
 }
 
@@ -37,8 +50,6 @@ Analyze.getAllStatements = function(text){
                /(may\s)?(also\s)?(us(e|ing)(?!r)|process)(personal\s)?((information|data)?)/igm),
                sharingData: categorizeStatements(text,
                /(third\s)?(part(y|ies)(\s)?)?(may\s)?(also\s)?(shar(e|ed|ing)|disclose)\s?(your(\s)?)?(user(\s)?)?(personal(\s)?)?(information|data(\s)?)?(outside)?/igm)
-               // updatingToS: categorizeStatements(text,
-               // /(reserves\s)?(the)?(right)?(to)?updat(e|ing)(from)?(time\sto\stime)?/igm),
           }
           totalStmtCount = statements.collectingData.length + statements.usingData.length + statements.sharingData.length
           resolve(statements, totalStmtCount)
@@ -52,9 +63,9 @@ Analyze.validateAllStatements = function(statements, document){
           const SharingModel = await tf.loadLayersModel("http://127.0.0.1:8080/models/sharing/model.json");
           _tokenizer = await tokenizer
           predictions = {
-               collectingPrediction: await predictStatement(statements.collectingData, CollectingModel, 1015),
-               usingPrediction: await predictStatement(statements.usingData, UsingModel, 923),
-               sharingPrediction: await predictStatement(statements.sharingData, SharingModel, 803)
+               collectingPrediction: await predictStatement(statements.collectingData, CollectingModel, 1014),
+               usingPrediction: await predictStatement(statements.usingData, UsingModel, 922),
+               sharingPrediction: await predictStatement(statements.sharingData, SharingModel, 802)
           }
           info = {
                documentName: document.originalname
@@ -82,17 +93,6 @@ predictStatement = function(statements, Tmodel, vocabSize){
           })
           resolve(predictions)
      })
-}
-
-separateSentences = function(content){
-     regexRemoveNextLine = /(\r\n|\n|\r)/gm
-     regexAddNextLine = /(?<![0-9]|www|e|inc|my)\.(?!com|net|g\.)|;|•/ig
-     regexReplace = /•|●|○/ig
-     content = content.replace(regexRemoveNextLine, "")
-     content = content.replace(regexAddNextLine, "$&\n")
-     content = content.replace(regexReplace, "")
-
-     return content
 }
 
 preprocess = function(statement,vocab_len){

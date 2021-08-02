@@ -17,9 +17,9 @@ const uploadEngine = multer({storage: fileStorageEngine})
 router.get('/', upload.index);
 router.get('/about', home.about);
 router.get('/features', home.features);
-router.get('/results/download', result.report)
 
 router.post('/analyze', uploadEngine.single('pdf'), upload.upload);
 router.post('/results', result.results);
+router.post('/results/download', result.report)
 
 module.exports = router

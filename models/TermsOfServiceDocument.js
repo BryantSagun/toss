@@ -1,6 +1,5 @@
 const mongoose = require('mongoose')
 const Schema = mongoose.Schema
-const idPrefix = "TOSS"
 const ToSDocumentSchema = new Schema({
      content: {
           type: String,

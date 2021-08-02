@@ -18,14 +18,9 @@ Upload.validateFileType = function(file){
 
 Upload.createToSDocument = function(content){
      const tosdoc = new ToSDocument({
-          content: content
+          content: content.text
      })
-
-     tosdoc.save().then(()=>{
-          console.log("Saved Successfully.")
-     }).catch((err)=>{
-          console.log(err)
-     })
+     return tosdoc.save()
 }
 
 module.exports = Upload

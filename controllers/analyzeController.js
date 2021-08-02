@@ -1,30 +1,26 @@
 const Analyze = require('../models/Analyze')
-const path = require('path')
+const ToSDocument = require('../models/TermsOfServiceDocument')
 
 exports.loader = function(req, res){
-     file = path.resolve('./tosDocumentsServer', req.file.filename)
-     Analyze.extractTextFromPDF(file).then(text => {
-          Analyze.getAllStatements(Analyze.removeEmptyLines(text.split('\n'))).then((terms) => {
-               res.render('loader')
-               Analyze.validateAllStatements(terms, req.file)
-          }).catch(() => {
+     ToSDocument.findById(req.textId, function (err, docs) {
+          if (err){
                res.render('404')
-          })
-     }).catch(err => {
-          console.log(err)
-     })
-}
-
-exports.getLoader = function(req, res){
-     file = path.resolve('./tosDocumentsServer', req.file.filename)
-     Analyze.extractTextFromPDF(file).then(text => {
-          Analyze.getAllStatements(Analyze.removeEmptyLines(text.split('\n'))).then((terms) => {
-               res.render('loader')
-               Analyze.validateAllStatements(terms, req.file)
-          }).catch(() => {
-               res.render('404')
-          })
-     }).catch(err => {
-          console.log(err)
-     })
+          }
+          else{
+               Analyze.separateSentences(docs.content).then(text => {
+                    Analyze.getAllStatements(Analyze.removeEmptyLines(text.split('\n'))).then((terms) => {
+                         console.log(terms)
+                         res.render('loader')
+                         Analyze.validateAllStatements(terms, req.file)
+                    }).catch(() => {
+                         res.render('404')
+                    })
+               })
+               // Analyze.extractTextFromPDF(file).then(text => {
+                    
+               // }).catch(err => {
+               //      console.log(err)
+               // })
+          }
+      });
 }
