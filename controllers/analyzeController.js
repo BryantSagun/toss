@@ -9,7 +9,6 @@ exports.loader = function(req, res){
           else{
                Analyze.separateSentences(docs.content).then(text => {
                     Analyze.getAllStatements(Analyze.removeEmptyLines(text.split('\n'))).then((terms) => {
-                         console.log(terms)
                          res.render('loader')
                          Analyze.validateAllStatements(terms, req.file)
                     }).catch(() => {

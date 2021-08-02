@@ -4,7 +4,6 @@ const fs = require('fs')
 const pdfparse = require('pdf-parse')
 const tf = require('@tensorflow/tfjs')
 const LEN = 70
-const Statementss = require('./Statements')
 
 let Analyze = function(){}
 
@@ -63,9 +62,9 @@ Analyze.validateAllStatements = function(statements, document){
           const SharingModel = await tf.loadLayersModel("http://127.0.0.1:8080/models/sharing/model.json");
           _tokenizer = await tokenizer
           predictions = {
-               collectingPrediction: await predictStatement(statements.collectingData, CollectingModel, 1014),
-               usingPrediction: await predictStatement(statements.usingData, UsingModel, 922),
-               sharingPrediction: await predictStatement(statements.sharingData, SharingModel, 802)
+               collectingPrediction: await predictStatement(statements.collectingData, CollectingModel, 1013),
+               usingPrediction: await predictStatement(statements.usingData, UsingModel, 921),
+               sharingPrediction: await predictStatement(statements.sharingData, SharingModel, 801)
           }
           info = {
                documentName: document.originalname
