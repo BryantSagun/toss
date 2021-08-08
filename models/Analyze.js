@@ -63,9 +63,9 @@ Analyze.validateAllStatements = function(statements, document){
      return new Promise(async (resolve, reject) => {
           // tStart = Date.now() / 1000
           // console.log("Time Start: " + tStart)
-          const CollectingModel = await tf.loadLayersModel("http://hoshokuchi-toss.herokuapp.com/models/collecting/model.json");
-          const UsingModel = await tf.loadLayersModel("http://hoshokuchi-toss.herokuapp.com/models/using/model.json");
-          const SharingModel = await tf.loadLayersModel("http://hoshokuchi-toss.herokuapp.com/models/sharing/model.json");
+          const CollectingModel = await tf.loadLayersModel("https://hoshokuchi-toss.herokuapp.com/models/collecting/model.json");
+          const UsingModel = await tf.loadLayersModel("https://hoshokuchi-toss.herokuapp.com/models/using/model.json");
+          const SharingModel = await tf.loadLayersModel("https://hoshokuchi-toss.herokuapp.com/models/sharing/model.json");
           // const CollectingModel = await tf.loadLayersModel("http://127.0.0.1:8080/models/collecting/model.json");
           // const UsingModel = await tf.loadLayersModel("http://127.0.0.1:8080/models/using/model.json");
           // const SharingModel = await tf.loadLayersModel("http://127.0.0.1:8080/models/sharing/model.json");
