@@ -14,24 +14,24 @@ tokenizer = use.load().then(useObj => {
      return useObj.tokenizer
 })
 const mongoURI = "mongodb+srv://tossadmin:tossadmin@cluster0.th2be.mongodb.net/toss?retryWrites=true&w=majority"
-mongoose.connect(mongoURI, {
-     useNewUrlParser: true,
-     useCreateIndex: true,
-     useUnifiedTopology: true
-}).then((res) => {
-     app.listen(PORT);
-})
-const store = new mongoDBSession({
-     uri: mongoURI,
-     collection: 'tossSessions'
-})
-const oneDay = 1000 * 60 * 60 * 24;
+// mongoose.connect(mongoURI, {
+//      useNewUrlParser: true,
+//      useCreateIndex: true,
+//      useUnifiedTopology: true
+// }).then((res) => {
+//      app.listen(PORT);
+// })
+// const store = new mongoDBSession({
+//      uri: mongoURI,
+//      collection: 'tossSessions'
+// })
+// const oneDay = 1000 * 60 * 60 * 24;
 app.use(session({
      secret: 'termsofservicesimplifier',
      resave: false,
-     saveUninitialized: false,
-     cookie: { maxAge: oneDay },
-     store: store
+     saveUninitialized: false
+     // cookie: { maxAge: oneDay },
+     //store: store
 }))
 app.use(express.static('public'));
 app.use(expressLayouts)
@@ -45,3 +45,4 @@ app.use(function(req, res){
      res.status(404)
      res.render('404')
 })
+app.listen(PORT);

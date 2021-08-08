@@ -16,11 +16,11 @@ Upload.validateFileType = function(file){
      })
 }
 
-Upload.createToSDocument = function(content){
-     const tosdoc = new ToSDocument({
-          content: content.text
-     })
-     return tosdoc.save()
-}
+// Upload.createToSDocument = function(content){
+//      const tosdoc = new ToSDocument({
+//           content: content.text
+//      })
+//      return tosdoc.save()
+// }
 
 module.exports = Upload
