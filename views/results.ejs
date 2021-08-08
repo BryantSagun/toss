@@ -13,7 +13,7 @@
                 <img class="results-img py-4" src="/assets/img/results/reject.png" alt="reject">
                 <h4 style="color: var(--red-);">TOSS found the document <br><strong><%= info.documentName %></strong><br> to contain HIGH RISK LEVEL statements.</h4>
                 <p>The document <%= info.documentName %> that you have uploaded for analysis has statements that allow the distribution of your data.</p>
-            <% }else if (ratings.usingDataRating > 0) { %>
+            <% }else if (ratings.usingDataRating > 0 || ratings.collectingDataRating > 0) { %>
                 <h3><strong style="color: var(--orange-)">MODERATE RISK LEVEL</strong></h3>
                 <img class="results-img py-4" src="/assets/img/results/caution.png" alt="caution">
                 <h4 style="color: var(--orange-)">TOSS found out that there are statements about data collection and usage which might put you at a MODERATE RISK LEVEL.</h4>
