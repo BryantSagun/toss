@@ -36,7 +36,7 @@ exports.results = function(req, res){
 
 exports.report = function(req, res){
      Result.generateReport(statements,  predictions, totalStmtCount, info).then(([report, reportName]) => {
-          res.download(path.resolve('./reports/', reportName))
+          res.download(path.resolve('/reports/', reportName))
      })
 }
 

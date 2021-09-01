@@ -84,18 +84,38 @@ Result.generateReport = function(statements, predictions, totalStmtCount, info){
 
 getListOfStatements = function(report, statements, predictions, category){
      count = 1
+     statementNum = 1
      report
      .fontSize(20)
      .lineGap(20)
      .fill('black').text(category)
      .lineGap(2)
      .fontSize(12)
+     .text("Risky Statements")
      statements.forEach(statement => {
-          report.text("["+count+"] " + statement, {
-               align: 'justify'
-          })
+          if(predictions[count-1]==0){
+               report.text("["+statementNum+"] " + statement, {
+                    align: 'justify'
+               })
+               statementNum++
+          }
           count++
      })
+     count = 1
+     statementNum = 1
+     report
+     .moveDown()
+     .text("Minimal Risk Statements")
+     statements.forEach(statement => {
+          if(predictions[count-1]==1){
+               report.text("["+statementNum+"] " + statement, {
+                    align: 'justify'
+               })
+               statementNum++
+          }
+          count++
+     })
+     count = 1
      report
      .moveDown(3)
 }
