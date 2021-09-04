@@ -51,41 +51,24 @@ Analyze.getAllStatements = function(text){
                /(third\s)?(part(y|ies)(\s)?)?(may\s)?(also\s)?(shar(e|ed|ing)|disclose)\s?(your(\s)?)?(user(\s)?)?(personal(\s)?)?(information|data(\s)?)?(outside)?/igm)
           }
           totalStmtCount = statements.collectingData.length + statements.usingData.length + statements.sharingData.length
-          // console.log("Total Statement Count: " + totalStmtCount)
-          // console.log("Collecting Data Statement Count: " + statements.collectingData.length)
-          // console.log("Using Data Statement Count: " + statements.usingData.length)
-          // console.log("Sharing Data Statement Count: " + statements.sharingData.length)
           resolve(statements, totalStmtCount)
      })
 }
 
 Analyze.validateAllStatements = function(statements, document){
      return new Promise(async (resolve, reject) => {
-          // tStart = Date.now() / 1000
-          // console.log("Time Start: " + tStart)
-          const CollectingModel = await tf.loadLayersModel("https://hoshokuchi-toss.herokuapp.com/models/collecting/model.json");
-          const UsingModel = await tf.loadLayersModel("https://hoshokuchi-toss.herokuapp.com/models/using/model.json");
-          const SharingModel = await tf.loadLayersModel("https://hoshokuchi-toss.herokuapp.com/models/sharing/model.json");
-          // const CollectingModel = await tf.loadLayersModel("http://127.0.0.1:8080/models/collecting/model.json");
-          // const UsingModel = await tf.loadLayersModel("http://127.0.0.1:8080/models/using/model.json");
-          // const SharingModel = await tf.loadLayersModel("http://127.0.0.1:8080/models/sharing/model.json");
+          // const CollectingModel = await tf.loadLayersModel("https://hoshokuchi-toss.herokuapp.com/models/collecting/model.json");
+          // const UsingModel = await tf.loadLayersModel("https://hoshokuchi-toss.herokuapp.com/models/using/model.json");
+          // const SharingModel = await tf.loadLayersModel("https://hoshokuchi-toss.herokuapp.com/models/sharing/model.json");
+          const CollectingModel = await tf.loadLayersModel("http://127.0.0.1:8080/models/collecting/model.json");
+          const UsingModel = await tf.loadLayersModel("http://127.0.0.1:8080/models/using/model.json");
+          const SharingModel = await tf.loadLayersModel("http://127.0.0.1:8080/models/sharing/model.json");
           _tokenizer = await tokenizer
           predictions = {
                collectingPrediction: await predictStatement(statements.collectingData, CollectingModel, 1013),
                usingPrediction: await predictStatement(statements.usingData, UsingModel, 921),
                sharingPrediction: await predictStatement(statements.sharingData, SharingModel, 801)
           }
-          //console.log("=====================================================================")
-          // tEnd = Date.now() / 1000
-          // console.log("Time End: " + tEnd)
-          // console.log("Time Elapsed: " + (tEnd - tStart) + " seconds")
-          // console.log("Collecting Data Good Prediction Count: " + (predictions.collectingPrediction.length - getBadStmtCount(predictions.collectingPrediction)))
-          // console.log("Collecting Data Bad Prediction Count: " + getBadStmtCount(predictions.collectingPrediction))
-          // console.log("Using Data Good Prediction Count: " + (predictions.usingPrediction.length - getBadStmtCount(predictions.usingPrediction)))
-          // console.log("Using Data Bad Prediction Count: " + getBadStmtCount(predictions.usingPrediction))
-          // console.log("Sharing Data Good Prediction Count: " + (predictions.sharingPrediction.length - getBadStmtCount(predictions.sharingPrediction)))
-          // console.log("Sharing Data Bad Prediction Count: " + getBadStmtCount(predictions.sharingPrediction))
-          // console.log("Total Prediction Count: " + (predictions.collectingPrediction.length + predictions.usingPrediction.length + predictions.sharingPrediction.length))
           info = {
                documentName: document.originalname
           }

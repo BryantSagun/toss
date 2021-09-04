@@ -2,7 +2,8 @@
      <div class="col-lg-12">
           <div class="row">
                <div class="col-lg-6">
-                    <h2 class="py-2 text-center" id="predictionStatusText">Analyzing Document...</h2>
+                    <h2 class="py-2 text-center" id="predictionStatusText">Processing Document...</h2>
+                    <h3 class="py-2 text-center" id="predictionStatusIndicator"></h3>
                     <div class="d-flex justify-content-center">
                          <div style='float: left; padding-left: 5px;'>
                               <form action="/results" method="POST">
@@ -71,9 +72,17 @@
 <script>
      document.addEventListener('DOMContentLoaded', function(){
           duration = '<%= totalStmtCount %>' * 200
+          document.getElementById('predictionStatusIndicator').innerHTML = 'Step 1: Analyzing Statements';
+          setTimeout(function(){
+               document.getElementById('predictionStatusIndicator').innerHTML = 'Step 2: Calculating Statistics';
+          }, ('<%= totalStmtCount %>'/2)*200)
+          setTimeout(function(){
+               document.getElementById('predictionStatusIndicator').innerHTML = 'Step 3: Preparing Results';
+          }, ('<%= totalStmtCount %>'/1.5)*200)
           setTimeout(function(){
                document.getElementById('ripple').remove()
                document.getElementById('cancelBtn').remove()
+               document.getElementById('predictionStatusIndicator').remove()
                document.getElementById('predictionStatusText').innerHTML = 'Results are Ready!';
                document.getElementById('results').style.display = "block";
           }, duration)

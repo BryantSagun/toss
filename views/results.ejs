@@ -65,11 +65,11 @@
                 </div>
                 <div class="row">
                     <div class="col-8 text-left">Number of Good Statements Detected: </div>
-                    <div class="col-4 text-center"><%= goodPredictionCount %></div>
+                    <div class="col-4 text-center"><%= goodPredictionCount %> (<%= ((goodPredictionCount/statementCount)*100).toPrecision(2) %>%)</div>
                 </div>
                 <div class="row">
                     <div class="col-8 text-left">Number of Risky Statements Detected: </div>
-                    <div class="col-4 text-center"><%= badPredictionCount %></div>
+                    <div class="col-4 text-center"><%= badPredictionCount %> (<%= ((badPredictionCount/statementCount)*100).toPrecision(2) %>%)</div>
                 </div>
             </div>
             <!-- <div class="py-2">
@@ -89,56 +89,70 @@
     <div>
         <h1 class="text-center pb-3">Assessment results for each statement</h1>
         <div class="statementsEvaluation w-100">
-    
-            <h2 class="statementEvaluationCategory my-4 pl-3 py-3">Collecting Data Statements</h2>
-            <% count = 0 %>
+            <div class="row">
+                <h2 class="statementEvaluationCategory my-4 pl-3 py-3 col-2">Page No.</h2>
+                <h2 class="statementEvaluationCategory my-4 pl-3 py-3 col-8">Collecting Data Statements</h2>
+                <h2 class="statementEvaluationCategory my-4 pl-3 py-3 col-2">Risk Level</h2>
+            </div>
             <% statements.collectingData.forEach((statement)=>{ %>
-                <div class="row">
-                    <div class="col-10">
-                        <% if(count % 2 == 0){ %>
-                            <h5 class="text-justify"><%= statement %></h5>
-                        <% } else { %>
-                            <h5 class="text-justify wht-txt"><%= statement %></h5>
-                        <% } %>
-                   </div>
-                   <div class="col-2">
-                        <% if(predictions.collectingPrediction[count] == 0) { %>
-                            <h5 class="text-center bold-text evaluationLabelBadModerate">RISKY</h5>
-                        <% } else { %>
-                            <h5 class="text-center bold-text evaluationLabelGood">GOOD</h5>
-                        <% } %>
-                  </div>
-                </div>
+                <% count = 0 %>
+                    <div class="row">
+                        <div class="col-2"></div>
+                        <div class="col-8">
+                            <% if(count % 2 == 0){ %>
+                                <h5 class="text-justify"><%= statement %></h5>
+                            <% } else { %>
+                                <h5 class="text-justify wht-txt"><%= statement %></h5>
+                            <% } %>
+                        </div>
+                        <div class="col-2">
+                                <% if(predictions.collectingPrediction[count] == 0) { %>
+                                    <h5 class="text-center bold-text evaluationLabelBadModerate">RISKY</h5>
+                                <% } else { %>
+                                    <h5 class="text-center bold-text evaluationLabelGood">GOOD</h5>
+                                <% } %>
+                        </div>
+                    </div>
                 <% count++ %>
             <% }) %>
     
-            <h2 class="statementEvaluationCategory my-4 pl-3 py-3">Using Data Statements</h2>
-            <% count = 0 %>
+            <div class="row">
+                <h2 class="statementEvaluationCategory my-4 pl-3 py-3 col-2">Page No.</h2>
+                <h2 class="statementEvaluationCategory my-4 pl-3 py-3 col-8">Using Data Statements</h2>
+                <h2 class="statementEvaluationCategory my-4 pl-3 py-3 col-2">Risk Level</h2>
+            </div>
             <% statements.usingData.forEach((statement)=>{ %>
+                <% count = 0 %>
                 <div class="row">
-                    <div class="col-10">
+                    <div class="col-2"></div>
+                    <div class="col-8">
                         <% if(count % 2 == 0){ %>
                             <h5 class="text-justify"><%= statement %></h5>
                         <% } else { %>
                             <h5 class="text-justify wht-txt"><%= statement %></h5>
                         <% } %>
-                   </div>
-                   <div class="col-2">
+                    </div>
+                    <div class="col-2">
                         <% if(predictions.usingPrediction[count] == 0) { %>
                             <h5 class="text-center bold-text evaluationLabelBadModerate">RISKY</h5>
                         <% } else { %>
                             <h5 class="text-center bold-text evaluationLabelGood">GOOD</h5>
                         <% } %>
-                  </div>
+                    </div>
                 </div>
                 <% count++ %>
             <% }) %>
     
-            <h2 class="statementEvaluationCategory my-4 pl-3 py-3">Sharing Data Statements</h2>
-            <% count = 0 %>
+            <div class="row">
+                <h2 class="statementEvaluationCategory my-4 pl-3 py-3 col-2">Page No.</h2>
+                <h2 class="statementEvaluationCategory my-4 pl-3 py-3 col-8">Sharing Data Statements</h2>
+                <h2 class="statementEvaluationCategory my-4 pl-3 py-3 col-2">Risk Level</h2>
+            </div>
             <% statements.sharingData.forEach((statement)=>{ %>
+                <% count = 0 %>
                 <div class="row">
-                    <div class="col-10">
+                    <div class="col-2"></div>
+                    <div class="col-8">
                         <% if(count % 2 == 0){ %>
                             <h5 class="text-justify"><%= statement %></h5>
                         <% } else { %>
