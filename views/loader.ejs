@@ -72,12 +72,12 @@
 <script>
      document.addEventListener('DOMContentLoaded', function(){
           duration = '<%= totalStmtCount %>' * 200
-          document.getElementById('predictionStatusIndicator').innerHTML = 'Step 1: Analyzing Statements';
+          document.getElementById('predictionStatusIndicator').innerHTML = 'Step 1: Analyzing Statements<img src="/assets/img/loader/step-1.png" class="py-2 px-2 text-center results-img-sm">';
           setTimeout(function(){
-               document.getElementById('predictionStatusIndicator').innerHTML = 'Step 2: Calculating Statistics';
+               document.getElementById('predictionStatusIndicator').innerHTML = 'Step 2: Calculating Statistics<img src="/assets/img/loader/step-2.png" class="py-2 px-2 text-center results-img-sm">';
           }, ('<%= totalStmtCount %>'/2)*200)
           setTimeout(function(){
-               document.getElementById('predictionStatusIndicator').innerHTML = 'Step 3: Preparing Results';
+               document.getElementById('predictionStatusIndicator').innerHTML = 'Step 3: Preparing Results<img src="/assets/img/loader/step-3.png" class="py-2 px-2 text-center results-img-sm">';
           }, ('<%= totalStmtCount %>'/1.5)*200)
           setTimeout(function(){
                document.getElementById('ripple').remove()
