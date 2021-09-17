@@ -4,14 +4,14 @@
                <div class="col-lg-6">
                     <h2 class="py-2 text-center" id="predictionStatusText">Processing Document...</h2>
                     <div class="row">
-                         <h5 class="text-center col-4" id="predictionStatusIndicatorS1"></h5>
-                         <h5 class="text-center col-4" id="predictionStatusIndicatorS2" style="color: gray;"></h5>
-                         <h5 class="text-center col-4" id="predictionStatusIndicatorS3" style="color: gray;"></h5>
+                         <h3 class="text-center col-4" id="predictionStatusIndicatorS1"></h3>
+                         <h3 class="text-center col-4" id="predictionStatusIndicatorS2" style="color: gray;"></h3>
+                         <h3 class="text-center col-4" id="predictionStatusIndicatorS3" style="color: gray;"></h3>
                     </div>
                     <div class="row">
-                         <h5 class="text-center col-4" id="predictionStatusIndicatorS1Img"></h5>
-                         <h5 class="text-center col-4" id="predictionStatusIndicatorS2Img"></h5>
-                         <h5 class="text-center col-4" id="predictionStatusIndicatorS3Img"></h5>
+                         <h5 class="text-center col-4" id="predictionStatusIndicatorS1Img" style="display: none;"><img src="/assets/img/loader/step-1.png" class="text-center results-img-sm"></h5>
+                         <h5 class="text-center col-4" id="predictionStatusIndicatorS2Img" style="display: none;"><img src="/assets/img/loader/step-2.png" class="text-center results-img-sm"></h5>
+                         <h5 class="text-center col-4" id="predictionStatusIndicatorS3Img"><img src="/assets/img/loader/step-3.png" class="text-center results-img-sm" style="display: none;"></h5>
                     </div>
                     <div class="d-flex justify-content-center">
                          <div>
@@ -81,21 +81,16 @@
 <script>
      document.addEventListener('DOMContentLoaded', function(){
           duration = '<%= totalStmtCount %>' * 200
-          document.getElementById('predictionStatusIndicatorS1').innerHTML = 'STEP 1 <br> Analyzing Statements';
-          //document.getElementById('predictionStatusIndicatorS1Img').innerHTML = '<img src="/assets/img/loader/step-1.png" class="text-center results-img-sm">';
-          document.getElementById('predictionStatusIndicatorS2').innerHTML = 'STEP 2 <br> Calculating Statistics';
-          //document.getElementById('predictionStatusIndicatorS2Img').innerHTML = '<img src="/assets/img/loader/step-2-g.png" class="text-center results-img-sm">';
-          document.getElementById('predictionStatusIndicatorS3').innerHTML = 'STEP 3 <br> Preparing <br> Results';
-          //document.getElementById('predictionStatusIndicatorS3Img').innerHTML = '<img src="/assets/img/loader/step-3-g.png" class="text-center results-img-sm">';
+          document.getElementById('predictionStatusIndicatorS1').innerHTML = '01 <br> Analyzing Statements';
+          document.getElementById('predictionStatusIndicatorS2').innerHTML = '02 <br> Calculating Statistics';
+          document.getElementById('predictionStatusIndicatorS3').innerHTML = '03 <br> Preparing <br> Results';
           setTimeout(function(){
                document.getElementById('predictionStatusIndicatorS1').style.color = "gray";
                document.getElementById('predictionStatusIndicatorS2').style.color = "#07DA63";
-               //document.getElementById('predictionStatusIndicatorS2Img').innerHTML = '<img src="/assets/img/loader/step-2.png" class="text-center results-img-sm">';
           }, ('<%= totalStmtCount %>'/2)*200)
           setTimeout(function(){
                document.getElementById('predictionStatusIndicatorS2').style.color = "gray";
                document.getElementById('predictionStatusIndicatorS3').style.color = "#07DA63";
-               //document.getElementById('predictionStatusIndicatorS3Img').innerHTML = '<img src="/assets/img/loader/step-3.png" class="text-center results-img-sm">';
           }, ('<%= totalStmtCount %>'/1.5)*200)
           setTimeout(function(){
                document.getElementById('predictionStatusIndicatorS1').style.color = "#07DA63";
