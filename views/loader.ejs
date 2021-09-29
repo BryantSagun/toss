@@ -2,16 +2,23 @@
      <div class="col-lg-12">
           <div class="row">
                <div class="col-lg-6">
-                    <h2 class="py-2 text-center" id="predictionStatusText">Processing Document...</h2>
+                    <h2 class="pb-5 text-center" id="predictionStatusText"><strong>Processing Document...</strong></h2>
+                    <h2 class="pb-5 text-center" id="resultsText" style="display: none;"><strong>Get Results!</strong></h2>
                     <div class="row">
                          <h3 class="text-center col-4" id="predictionStatusIndicatorS1"></h3>
                          <h3 class="text-center col-4" id="predictionStatusIndicatorS2" style="color: gray;"></h3>
                          <h3 class="text-center col-4" id="predictionStatusIndicatorS3" style="color: gray;"></h3>
                     </div>
-                    <div class="row">
-                         <h5 class="text-center col-4" id="predictionStatusIndicatorS1Img" style="display: none;"><img src="/assets/img/loader/step-1.png" class="text-center results-img-sm"></h5>
-                         <h5 class="text-center col-4" id="predictionStatusIndicatorS2Img" style="display: none;"><img src="/assets/img/loader/step-2.png" class="text-center results-img-sm"></h5>
-                         <h5 class="text-center col-4" id="predictionStatusIndicatorS3Img"><img src="/assets/img/loader/step-3.png" class="text-center results-img-sm" style="display: none;"></h5>
+                    <div class="row pb-5">
+                         <h5 class="text-center col-4"><img id="predictionStatusIndicatorS1Img" src="/assets/img/loader/step-1.png" class="text-center results-img-sm"></h5>
+                         <h5 class="text-center col-4"><img id="predictionStatusIndicatorS2Img" src="/assets/img/loader/step-2-g.png" class="text-center results-img-sm"></h5>
+                         <h5 class="text-center col-4"><img id="predictionStatusIndicatorS3Img" src="/assets/img/loader/step-3-g.png" class="text-center results-img-sm"></h5>
+                    </div>
+                    <div class="pb-5" id="curr-prog">
+                         <div id="progbar"></div>
+                    </div>
+                    <div class="loader" style="display: none;">
+                         <div class="ripple" id="ripple"></div>
                     </div>
                     <div class="d-flex justify-content-center">
                          <div>
@@ -20,12 +27,8 @@
                               </form>
                          </div>
                     </div>
-                    <div class="loader">
-                         <div class="ripple" id="ripple"></div>
-                    </div>
-                    <div class="py-5"></div>
                     <div class="d-flex justify-content-center">
-                         <div style='float: left; padding-left: 5px;'>
+                         <div>
                               <form action="/" method="GET">
                                    <button class="btn btn-cancel my-3" id="cancelBtn">Cancel</button> 
                               </form>
@@ -80,29 +83,70 @@
 
 <script>
      document.addEventListener('DOMContentLoaded', function(){
-          duration = '<%= totalStmtCount %>' * 200
+          duration = '<%= totalStmtCount %>' * 200;
+
           document.getElementById('predictionStatusIndicatorS1').innerHTML = '01 <br> Analyzing Statements';
           document.getElementById('predictionStatusIndicatorS2').innerHTML = '02 <br> Calculating Statistics';
           document.getElementById('predictionStatusIndicatorS3').innerHTML = '03 <br> Preparing <br> Results';
+
           setTimeout(function(){
                document.getElementById('predictionStatusIndicatorS1').style.color = "gray";
+               document.getElementById('predictionStatusIndicatorS1Img').src = "/assets/img/loader/step-1-g.png";
                document.getElementById('predictionStatusIndicatorS2').style.color = "#07DA63";
+               document.getElementById('predictionStatusIndicatorS2Img').src = "/assets/img/loader/step-2.png";
+
+               document.getElementById("progbar").style.animation = "step1 2s";
+               document.getElementById("progbar").style.width = "33%";
+               // document.getElementById("progbar").innerHTML = "33%";
           }, ('<%= totalStmtCount %>'/2)*200)
+
           setTimeout(function(){
                document.getElementById('predictionStatusIndicatorS2').style.color = "gray";
+               document.getElementById('predictionStatusIndicatorS2Img').src = "/assets/img/loader/step-2-g.png";
                document.getElementById('predictionStatusIndicatorS3').style.color = "#07DA63";
+               document.getElementById('predictionStatusIndicatorS3Img').src = "/assets/img/loader/step-3.png";
+
+               document.getElementById("progbar").style.animation = "step2 2s";
+               document.getElementById("progbar").style.width = "66%";
+               // document.getElementById("progbar").innerHTML = "66%";
           }, ('<%= totalStmtCount %>'/1.5)*200)
+
           setTimeout(function(){
                document.getElementById('predictionStatusIndicatorS1').style.color = "#07DA63";
+               document.getElementById('predictionStatusIndicatorS1Img').src = "/assets/img/loader/step-1.png";
                document.getElementById('predictionStatusIndicatorS2').style.color = "#07DA63";
+               document.getElementById('predictionStatusIndicatorS2Img').src = "/assets/img/loader/step-2.png";
                document.getElementById('ripple').remove()
                document.getElementById('cancelBtn').remove()
-               document.getElementById('predictionStatusText').innerHTML = 'Results are Ready!';
+               document.getElementById('predictionStatusText').style.display = "none";
+               document.getElementById('resultsText').style.display = "block";
                document.getElementById('results').style.display = "block";
+
+               document.getElementById("progbar").style.animation = "step3 2s";
+               document.getElementById("progbar").style.width = "100%";
+               // document.getElementById("progbar").innerHTML = "100%";
           }, duration)
 
           document.getElementById('cancelBtn').addEventListener("click", function(){
                return;
           })
      })
+
+     // function move() {
+     //      if (i == 0) {
+     //           i = 1;
+     //           var elem = document.getElementById("progbar");
+     //           var width = 1;
+     //           var id = setInterval(frame, 10);
+     //           function frame() {
+     //                if (width >= 100) {
+     //                     clearInterval(id);
+     //                     i = 0;
+     //                } else {
+     //                     width++;
+     //                     elem.style.width = width + "%";
+     //                }
+     //           }
+     //      }
+     // }
 </script>

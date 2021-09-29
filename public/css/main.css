@@ -74,6 +74,18 @@ a{
      text-decoration: none;
      color: var(--green-);
 }
+
+.body-link{
+     text-decoration: none;
+     color: var(--green-);
+}
+
+.body-link:hover{
+     text-decoration: none;
+     color: var(--green-);
+     border-bottom: 1px solid;
+}
+
 .body-text{
      color: var(--softwhite-);
 }
@@ -233,6 +245,42 @@ hr{
      width: 200px;
 }
 
+#container {
+     margin: 20px;
+     width: 400px;
+     height: 8px;
+}
+
+#predictionStatusText{
+     position: relative;
+     top: 10%;
+     left: 50%;
+     transform: translate(-50%,-50%);
+     color: #ffffff;
+     background: linear-gradient(to right, var(--green-) 0%, var(--dullgrey-) 10%, var(--green-) 20%);
+     background-position: 0;
+     -webkit-background-clip: text;
+     -webkit-text-fill-color: transparent;
+     animation: shine 3s infinite linear;
+     animation-fill-mode: forwards;
+     -webkit-text-size-adjust: none;
+     text-decoration: none;
+     white-space: nowrap;
+}
+
+#curr-prog {
+     width: 100%;
+     background-color: none;
+}
+   
+#progbar {
+     width: 1%;
+     height: 30px;
+     background-color: var(--green-);
+     color: var(--softwhite-);
+     text-align: center;
+}
+
 .loader .ripple:before, .loader .ripple:after {
      content: "";
      display: block;
@@ -268,6 +316,7 @@ hr{
           opacity: 0;
     }
 }
+
 @keyframes loader-ripple2 {
      0% {
           transform: translate3d(0, 0, 0) scale(0);
@@ -282,9 +331,49 @@ hr{
     }
 }
 
-.members{
-     border: 2px solid var(--green-);
+@keyframes shine{
+     0%{
+          background-position: 0;
+     }
+     60%{
+          background-position: 500px;
+     }
+     100%{
+          background-position: 500px;
+     }
+
 }
+
+@keyframes step1 {
+     from {
+          width: 0%;
+     }
+
+     to {
+          width: 33%;
+     }
+}
+
+@keyframes step2 {
+     from {
+          width: 33%;
+     }
+
+     to {
+          width: 66%;
+     }
+}
+
+@keyframes step3 {
+     from {
+          width: 66%;
+     }
+
+     to {
+          width: 100%;
+     }
+}
+
 
 .member-picture{
      width: 200px;
@@ -333,7 +422,7 @@ hr{
 /* features showcase */
 .scrollspy{
      position: relative; 
-     height: 440px;
+     height: 475px;
      overflow-y: scroll;
      background-color: var(--green-);
      color: var(--softwhite-);
