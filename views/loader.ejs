@@ -97,7 +97,7 @@
 
                document.getElementById("progbar").style.animation = "step1 2s";
                document.getElementById("progbar").style.width = "33%";
-               // document.getElementById("progbar").innerHTML = "33%";
+               
           }, ('<%= totalStmtCount %>'/2)*200)
 
           setTimeout(function(){
@@ -108,7 +108,7 @@
 
                document.getElementById("progbar").style.animation = "step2 2s";
                document.getElementById("progbar").style.width = "66%";
-               // document.getElementById("progbar").innerHTML = "66%";
+               
           }, ('<%= totalStmtCount %>'/1.5)*200)
 
           setTimeout(function(){
@@ -124,7 +124,7 @@
 
                document.getElementById("progbar").style.animation = "step3 2s";
                document.getElementById("progbar").style.width = "100%";
-               // document.getElementById("progbar").innerHTML = "100%";
+               
           }, duration)
 
           document.getElementById('cancelBtn').addEventListener("click", function(){
