@@ -9,17 +9,17 @@
                 </div>
             </div>
             <% if (ratings.sharingDataRating > 0) { %>
-                <h3><strong style="color: var(--red-);">HIGH RISK LEVEL</strong></h3>
+                <h3 class="red-txt"><strong>HIGH RISK LEVEL</strong></h3>
                 <img class="results-img py-4" src="/assets/img/results/reject.png" alt="reject">
-                <h4 style="color: var(--red-);">TOSS found the document <br><strong><%= info.documentName %></strong><br> to contain HIGH RISK LEVEL statements.</h4>
+                <h4 class="red-txt">TOSS found the document <br><strong><%= info.documentName %></strong><br> to contain HIGH RISK LEVEL statements.</h4>
                 <p>The document <%= info.documentName %> that you have uploaded for analysis has statements that allow the distribution of your data.</p>
             <% }else if (ratings.usingDataRating > 0 || ratings.collectingDataRating > 0) { %>
-                <h3><strong style="color: var(--orange-)">MODERATE RISK LEVEL</strong></h3>
+                <h3 class="org-txt"><strong>MODERATE RISK LEVEL</strong></h3>
                 <img class="results-img py-4" src="/assets/img/results/caution.png" alt="caution">
-                <h4 style="color: var(--orange-)">TOSS found out that there are statements about data collection and usage which might put you at a MODERATE RISK LEVEL.</h4>
+                <h4 class="org-txt">TOSS found out that there are statements about data collection and usage which might put you at a MODERATE RISK LEVEL.</h4>
                 <p>The document <%= info.documentName %> contains terms that gather your data as part of the conditions, which might be misused for processes beyond the intended purpose.</p>
             <% }else { %>
-                <h3><strong style="color: var(--wgreen-);">MINIMAL RISK LEVEL</strong></h3>
+                <h3 class="wgreen-txt"><strong>MINIMAL RISK LEVEL</strong></h3>
                 <img class="results-img py-4" src="/assets/img/results/good.png" alt="good">
                 <h4>TOSS thinks there is only a MINIMAL RISK LEVEL for the document <br><strong><%= info.documentName %></strong>.</h4>
                 <p>The document <%= info.documentName %> does not require the collection and usage of your data as part of the agreement.</p>
@@ -72,11 +72,6 @@
                     <div class="col-4 text-center"><%= badPredictionCount %> (<%= ((badPredictionCount/statementCount)*100).toPrecision(2) %>%)</div>
                 </div>
             </div>
-            <!-- <div class="py-2">
-                <form action="/results/download" method="POST" id="">
-                    <label class="btn btn-primary">Download Report<a href='#' target="_blank"><button type="submit" name="downloadReport" id="downloadReport" class='upload-btn'></a></label>
-               </form>
-            </div> -->
         </div>
     </div>
 
@@ -229,15 +224,15 @@
         <div>
             <div class="row">
                 <div class="col-4">
-                    <h4 class="text-center">MINIMAL RISK LEVEL</h4>
+                    <h4 class="text-center wgreen-txt">MINIMAL RISK LEVEL</h4>
                     <p class="text-justify">The MINIMAL RISK LEVEL is a label used for the Terms of Service (ToS) documents that do not require the collection and usage of the information of an individual.</p>
                 </div>
                 <div class="col-4">
-                    <h4 class="text-center" style="color: var(--orange-)">MODERATE RISK LEVEL</h4>
+                    <h4 class="text-center org-txt">MODERATE RISK LEVEL</h4>
                     <p class="text-justify">The MODERATE RISK LEVEL is a label used for the Terms of Service (ToS) documents that use data as part of certain operations and functions of an organization.</p>
                 </div>
                 <div class="col-4">
-                    <h4 class="text-center" style="color: var(--red-);">HIGH RISK LEVEL</h4>
+                    <h4 class="text-center red-txt">HIGH RISK LEVEL</h4>
                     <p class="text-justify">The HIGH RISK LEVEL is a label used for the Terms of Service (ToS) documents with statements that allow companies to disclose data to entities outside their boundaries, such as third-parties.</p>
                 </div>
             </div>

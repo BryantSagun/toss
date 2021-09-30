@@ -17,9 +17,6 @@
                     <div class="pb-5" id="curr-prog">
                          <div id="progbar"></div>
                     </div>
-                    <div class="loader" style="display: none;">
-                         <div class="ripple" id="ripple"></div>
-                    </div>
                     <div class="d-flex justify-content-center">
                          <div>
                               <form action="/results" method="POST">
@@ -116,7 +113,6 @@
                document.getElementById('predictionStatusIndicatorS1Img').src = "/assets/img/loader/step-1.png";
                document.getElementById('predictionStatusIndicatorS2').style.color = "#07DA63";
                document.getElementById('predictionStatusIndicatorS2Img').src = "/assets/img/loader/step-2.png";
-               document.getElementById('ripple').remove()
                document.getElementById('cancelBtn').remove()
                document.getElementById('predictionStatusText').style.display = "none";
                document.getElementById('resultsText').style.display = "block";
@@ -131,22 +127,4 @@
                return;
           })
      })
-
-     // function move() {
-     //      if (i == 0) {
-     //           i = 1;
-     //           var elem = document.getElementById("progbar");
-     //           var width = 1;
-     //           var id = setInterval(frame, 10);
-     //           function frame() {
-     //                if (width >= 100) {
-     //                     clearInterval(id);
-     //                     i = 0;
-     //                } else {
-     //                     width++;
-     //                     elem.style.width = width + "%";
-     //                }
-     //           }
-     //      }
-     // }
 </script>

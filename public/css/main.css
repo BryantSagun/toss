@@ -32,7 +32,6 @@ main{
 .main-content{
      color: var(--green-);
      font-family: 'Roboto', sans-serif;
-     /* font-family: 'Manrope', sans-serif; */
 }
 
 /* images/logos */
@@ -120,8 +119,13 @@ hr{
 .red-txt{
      color: var(--red-);
 }
+
 .blk-txt{
      color: var(--matteblack-);
+}
+
+.wgreen-txt{
+     color: var(--wgreen-);
 }
 
 .wht-txt{
